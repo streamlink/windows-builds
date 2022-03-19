@@ -1,0 +1,41 @@
+name: Build and deploy
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - buildname: py310-x86_64
+          - buildname: py310-x86
+          - buildname: py38-x86_64
+          - buildname: py38-x86
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          ./install-build-dependencies.sh
+      - name: Build
+        run: |
+          export SOURCE_DATE_EPOCH=$(git show -s --format=%ct)
+          ./build.sh "${{ matrix.buildname }}"
+      - name: Get file name
+        id: vars
+        run: |
+          filename="$(cd dist/ && ls *.exe)"
+          echo "::set-output name=installer_name::${filename%%.exe}"
+      - uses: actions/upload-artifact@v3
+        if: github.event_name == 'push'
+        with:
+          name: ${{ steps.vars.outputs.installer_name }}
+          path: dist/*.exe
