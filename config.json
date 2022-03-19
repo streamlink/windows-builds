@@ -1,0 +1,190 @@
+{
+  "app": {
+    "name": "streamlink",
+    "rel": "1"
+  },
+  "git": {
+    "repo": "https://github.com/streamlink/streamlink.git",
+    "ref": "3.2.0"
+  },
+  "assets": {
+    "ffmpeg-x86": {
+      "filename": "ffmpeg-n5.0-4-g911d7f167c-win32-gpl-5.0.zip",
+      "url": "https://github.com/streamlink/FFmpeg-Builds/releases/download/20220320-1/ffmpeg-n5.0-4-g911d7f167c-win32-gpl-5.0.zip",
+      "sha256": "809c3c727fedcf55313f4a99e8a65d2cea65e9b19cf973dbed6ab2f7aea1160b",
+      "type": "zip",
+      "sourcedir": "ffmpeg-n5.0-4-g911d7f167c-win32-gpl-5.0",
+      "targetdir": "ffmpeg",
+      "files": [
+        {
+          "from": "bin/ffmpeg.exe",
+          "to": "ffmpeg.exe"
+        },
+        {
+          "from": "LICENSE.txt",
+          "to": "LICENSE.txt"
+        },
+        {
+          "from": "BUILDINFO.txt",
+          "to": "BUILDINFO.txt"
+        }
+      ]
+    },
+    "ffmpeg-x86_64": {
+      "filename": "ffmpeg-n5.0-4-g911d7f167c-win64-gpl-5.0.zip",
+      "url": "https://github.com/streamlink/FFmpeg-Builds/releases/download/20220320-1/ffmpeg-n5.0-4-g911d7f167c-win64-gpl-5.0.zip",
+      "sha256": "55f632f700d9ec7154a16421cabbf97b87b7d41c4361654630a9f0a894d76851",
+      "type": "zip",
+      "sourcedir": "ffmpeg-n5.0-4-g911d7f167c-win64-gpl-5.0",
+      "targetdir": "ffmpeg",
+      "files": [
+        {
+          "from": "bin/ffmpeg.exe",
+          "to": "ffmpeg.exe"
+        },
+        {
+          "from": "LICENSE.txt",
+          "to": "LICENSE.txt"
+        },
+        {
+          "from": "BUILDINFO.txt",
+          "to": "BUILDINFO.txt"
+        }
+      ]
+    }
+  },
+  "builds": {
+    "py38-x86": {
+      "implementation": "cp",
+      "pythonversion": "3.8",
+      "platform": "win32",
+      "pythonembed": {
+        "version": "3.8.13",
+        "filename": "python-v3.8.13-0-gea673213-windows-x86-embed.zip",
+        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20220322-1/python-v3.8.13-0-gea673213-windows-x86-embed.zip",
+        "sha256": "4ca3617e5751b57934bac8fa4816000acd9cf5904a3dbc1867dccb11ed499eb6"
+      },
+      "assets": [
+        "ffmpeg-x86"
+      ],
+      "dependencies": {
+        "sdists": {
+          "pycountry": "22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646",
+          "setuptools": "60.10.0 --hash=sha256:6599055eeb23bfef457d5605d33a4d68804266e6cb430b0fb12417c5efeae36c"
+        },
+        "wheels": {
+          "PySocks": "1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5",
+          "certifi": "2021.10.8 --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569",
+          "charset_normalizer": "2.0.12 --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df",
+          "idna": "3.3 --hash=sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
+          "isodate": "0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
+          "lxml": "4.8.0 --hash=sha256:20b8a746a026017acf07da39fdb10aa80ad9877046c9182442bf80c84a1c4696",
+          "pycryptodome": "3.14.1 --hash=sha256:53dedbd2a6a0b02924718b520a723e88bcf22e37076191eb9b91b79934fb2192",
+          "requests": "2.27.1 --hash=sha256:f22fa1e554c9ddfd16e6e41ac79759e17be9e492b3587efa038054674760e72d",
+          "six": "1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254",
+          "urllib3": "1.26.9 --hash=sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14",
+          "websocket_client": "1.3.1 --hash=sha256:074e2ed575e7c822fc0940d31c3ac9bb2b1142c303eafcf3e304e6ce035522e8"
+        }
+      }
+    },
+    "py38-x86_64": {
+      "implementation": "cp",
+      "pythonversion": "3.8",
+      "platform": "win_amd64",
+      "pythonembed": {
+        "version": "3.8.13",
+        "filename": "python-v3.8.13-0-gea673213-windows-x64-embed.zip",
+        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20220322-1/python-v3.8.13-0-gea673213-windows-x64-embed.zip",
+        "sha256": "4cbeac803297471589fabeab646f13227cce43713f227e56331db231e48e7f16"
+      },
+      "assets": [
+        "ffmpeg-x86_64"
+      ],
+      "dependencies": {
+        "sdists": {
+          "pycountry": "22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646",
+          "setuptools": "60.10.0 --hash=sha256:6599055eeb23bfef457d5605d33a4d68804266e6cb430b0fb12417c5efeae36c"
+        },
+        "wheels": {
+          "PySocks": "1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5",
+          "certifi": "2021.10.8 --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569",
+          "charset_normalizer": "2.0.12 --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df",
+          "idna": "3.3 --hash=sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
+          "isodate": "0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
+          "lxml": "4.8.0 --hash=sha256:891dc8f522d7059ff0024cd3ae79fd224752676447f9c678f2a5c14b84d9a939",
+          "pycryptodome": "3.14.1 --hash=sha256:ea56a35fd0d13121417d39a83f291017551fa2c62d6daa6b04af6ece7ed30d84",
+          "requests": "2.27.1 --hash=sha256:f22fa1e554c9ddfd16e6e41ac79759e17be9e492b3587efa038054674760e72d",
+          "six": "1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254",
+          "urllib3": "1.26.9 --hash=sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14",
+          "websocket_client": "1.3.1 --hash=sha256:074e2ed575e7c822fc0940d31c3ac9bb2b1142c303eafcf3e304e6ce035522e8"
+        }
+      }
+    },
+    "py310-x86": {
+      "implementation": "cp",
+      "pythonversion": "3.10",
+      "platform": "win32",
+      "pythonembed": {
+        "version": "3.10.3",
+        "filename": "python-v3.10.3-0-ga342a491-windows-x86-embed.zip",
+        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20220322-1/python-v3.10.3-0-ga342a491-windows-x86-embed.zip",
+        "sha256": "c1e52ccc75b8e56744e48e365ccbbedc8cc106c8ad5a604ef15e9b27108b632b"
+      },
+      "assets": [
+        "ffmpeg-x86"
+      ],
+      "dependencies": {
+        "sdists": {
+          "pycountry": "22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646",
+          "setuptools": "60.10.0 --hash=sha256:6599055eeb23bfef457d5605d33a4d68804266e6cb430b0fb12417c5efeae36c"
+        },
+        "wheels": {
+          "PySocks": "1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5",
+          "certifi": "2021.10.8 --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569",
+          "charset_normalizer": "2.0.12 --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df",
+          "idna": "3.3 --hash=sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
+          "isodate": "0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
+          "lxml": "4.8.0 --hash=sha256:330bff92c26d4aee79c5bc4d9967858bdbe73fdbdbacb5daf623a03a914fe05b",
+          "pycryptodome": "3.14.1 --hash=sha256:53dedbd2a6a0b02924718b520a723e88bcf22e37076191eb9b91b79934fb2192",
+          "requests": "2.27.1 --hash=sha256:f22fa1e554c9ddfd16e6e41ac79759e17be9e492b3587efa038054674760e72d",
+          "six": "1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254",
+          "urllib3": "1.26.9 --hash=sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14",
+          "websocket_client": "1.3.1 --hash=sha256:074e2ed575e7c822fc0940d31c3ac9bb2b1142c303eafcf3e304e6ce035522e8"
+        }
+      }
+    },
+    "py310-x86_64": {
+      "implementation": "cp",
+      "pythonversion": "3.10",
+      "platform": "win_amd64",
+      "pythonembed": {
+        "version": "3.10.3",
+        "filename": "python-v3.10.3-0-ga342a491-windows-x64-embed.zip",
+        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20220322-1/python-v3.10.3-0-ga342a491-windows-x64-embed.zip",
+        "sha256": "779fcf1594824803e6009de0a687bb031d66a470085f6013e968093f236c8afe"
+      },
+      "assets": [
+        "ffmpeg-x86_64"
+      ],
+      "dependencies": {
+        "sdists": {
+          "pycountry": "22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646",
+          "setuptools": "60.10.0 --hash=sha256:6599055eeb23bfef457d5605d33a4d68804266e6cb430b0fb12417c5efeae36c"
+        },
+        "wheels": {
+          "PySocks": "1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5",
+          "certifi": "2021.10.8 --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569",
+          "charset_normalizer": "2.0.12 --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df",
+          "idna": "3.3 --hash=sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
+          "isodate": "0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
+          "lxml": "4.8.0 --hash=sha256:b2582b238e1658c4061ebe1b4df53c435190d22457642377fd0cb30685cdfb76",
+          "pycryptodome": "3.14.1 --hash=sha256:ea56a35fd0d13121417d39a83f291017551fa2c62d6daa6b04af6ece7ed30d84",
+          "requests": "2.27.1 --hash=sha256:f22fa1e554c9ddfd16e6e41ac79759e17be9e492b3587efa038054674760e72d",
+          "six": "1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254",
+          "urllib3": "1.26.9 --hash=sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14",
+          "websocket_client": "1.3.1 --hash=sha256:074e2ed575e7c822fc0940d31c3ac9bb2b1142c303eafcf3e304e6ce035522e8"
+        }
+      }
+    }
+  }
+}
