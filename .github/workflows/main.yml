@@ -39,3 +39,20 @@ jobs:
         with:
           name: ${{ steps.vars.outputs.installer_name }}
           path: dist/*.exe
+
+  deploy:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - run: mkdir dist
+      - uses: actions/download-artifact@v3
+        with:
+          path: ./dist
+      - run: ./deploy.sh ./dist/**/*.exe
+        env:
+          RELEASES_API_KEY: ${{ secrets.GITHUB_TOKEN }}
