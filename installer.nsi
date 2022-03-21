@@ -69,6 +69,18 @@
   SubSectionEnd
 [% endblock %]
 
+[% block install_pkgs %]
+  ; Try to remove the pkgs subdirectory before installing the actual pkgs content, in case it already exists from previous
+  ; installs. This prevents old plugin files from being loaded by Streamlink that are incompatible with the current version.
+  ; The issue that gets introduced by this is the recursive removal of this path, and if the user has selected an
+  ; install path where a different pkgs subdirectory exists for other reasons, this will be removed unintentionally.
+  ; Since pynist's uninstaller invokes the same command instead of deleting all installed files and directories
+  ; in reverse order explicitly, we don't care too much about adding it here.
+  ; https://github.com/takluyver/pynsist/issues/66
+  RMDir /r "$INSTDIR\pkgs"
+  [[ super() ]]
+[% endblock install_pkgs %]
+
 [% block install_files %]
   [[ super() ]]
   ; Install config file

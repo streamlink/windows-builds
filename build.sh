@@ -83,7 +83,6 @@ TEMP=$(mktemp -d) && trap "rm -rf '${TEMP}'" EXIT || exit 255
 
 DIR_REPO="${TEMP}/source.git"
 DIR_BUILD="${TEMP}/build"
-DIR_PLUGINS="${TEMP}/plugins"
 DIR_ASSETS="${TEMP}/assets"
 DIR_WHEELS="${TEMP}/wheels"
 
@@ -91,7 +90,6 @@ mkdir -p \
   "${DIR_CACHE}" \
   "${DIR_DIST}" \
   "${DIR_BUILD}" \
-  "${DIR_PLUGINS}" \
   "${DIR_ASSETS}" \
   "${DIR_WHEELS}"
 
@@ -146,13 +144,6 @@ build_app() {
     --no-deps \
     --upgrade \
     "${DIR_REPO}"
-
-  log "Creating empty plugin files"
-  # https://github.com/streamlink/streamlink/issues/1223
-  sed \
-    -e 's/[[:space:]]*[#;].*//; /^[[:space:]]*$/d' \
-    "${DIR_REPO}/src/streamlink/plugins/.removed" \
-    | xargs -I@ touch "${DIR_PLUGINS}/@.py"
 
   log "Creating icon"
   for size in 16 32 48 256; do
@@ -276,14 +267,13 @@ prepare_installer() {
   log "Preparing pynsist config"
   env -i \
     DIR_BUILD="${DIR_BUILD}" \
-    DIR_PLUGINS="${DIR_PLUGINS}" \
     DIR_WHEELS="${DIR_WHEELS}" \
     VERSION="${installerversion}" \
     PYTHONVERSION="${pythonversionfull}" \
     BITNESS="$([[ "${platform}" == "win_amd64" ]] && echo 64 || echo 32)" \
     INSTALLER_NAME="${DIR_DIST}/${appname}-${installerversion}-${BUILDNAME}.exe" \
     NSI_TEMPLATE="installer.nsi" \
-    envsubst '$DIR_BUILD $DIR_PLUGINS $DIR_WHEELS $VERSION $ENTRYPOINT $PYTHONVERSION $BITNESS $INSTALLER_NAME $NSI_TEMPLATE' \
+    envsubst '$DIR_BUILD $DIR_WHEELS $VERSION $ENTRYPOINT $PYTHONVERSION $BITNESS $INSTALLER_NAME $NSI_TEMPLATE' \
     < "${ROOT}/installer.cfg" \
     > "${DIR_BUILD}/installer.cfg"
 }

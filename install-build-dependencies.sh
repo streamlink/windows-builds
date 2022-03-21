@@ -12,5 +12,5 @@ sudo apt-get install -y --no-install-recommends \
 python -m pip install -U pip
 python -m pip install --upgrade-strategy=eager \
   wheel \
-  pynsist==2.7 \
+  pynsist==2.8 \
   distlib==0.3.3
