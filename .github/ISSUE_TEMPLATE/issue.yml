@@ -1,0 +1,22 @@
+name: Issue
+description: An issue with one of Streamlink's Windows installers
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for reporting an issue with Streamlink's Windows installer!
+
+        **Issues and questions related Streamlink itself DO NOT BELONG here and will be closed immediately.**
+  - type: input
+    attributes:
+      label: Installer flavor and version
+      description: |
+        The exact file name of the installer.
+  - type: textarea
+    attributes:
+      label: Description
+      description: |
+        Explain the issue as thoroughly as you can and list the steps which lead to the problem.
+        Please also provide details about your operating system and its configuration if you can.
+    validations:
+      required: true

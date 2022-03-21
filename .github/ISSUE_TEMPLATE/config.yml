@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Main Streamlink repository"
+    about: "Please go here for any issues or questions related to Streamlink itself."
+    url: https://github.com/streamlink/streamlink
