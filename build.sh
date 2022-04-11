@@ -229,11 +229,12 @@ prepare_files() {
 }
 
 prepare_installer() {
-  local versionstring="$(cd "${DIR_REPO}" && python setup.py --version)"
-  local versionplain="${versionstring%%+*}"
-  local versionmeta="${versionstring##*+}"
+  log "Reading version string"
+  local versionstring versionplain versionmeta vi_version installerversion
 
-  local vi_version installerversion
+  versionstring="$(python -c "from importlib.metadata import version;print(version('${appname}'))")"
+  versionplain="${versionstring%%+*}"
+  versionmeta="${versionstring##*+}"
 
   # Not a custom git reference (assume that only tagged releases are used as source)
   # Use plain version string with app release number and no abbreviated commit ID

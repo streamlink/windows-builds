@@ -57,7 +57,7 @@ Both the embedded Python builds and FFmpeg builds are unofficial and unsigned, a
 
 - GNU/Linux environment
 - [git](https://git-scm.com/)
-- [Python 3.7+](https://www.python.org/) and the most recent version of [pip](https://pip.pypa.io/en/stable/)
+- [Python 3.8+](https://www.python.org/) and the most recent version of [pip](https://pip.pypa.io/en/stable/)
   - [virtualenv](https://pypi.org/project/virtualenv/)
   - [pynsist](https://pypi.org/project/pynsist/) >=2.8
   - [distlib](https://pypi.org/project/distlib/) >=0.3.3, !=0.3.4
