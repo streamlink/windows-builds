@@ -25,7 +25,6 @@ WHEELS_IGNORE=(
 PIP_ARGS=(
   --isolated
   --disable-pip-version-check
-  --no-cache-dir
 )
 
 GIT_FETCHDEPTH=300
@@ -141,6 +140,7 @@ build_app() {
   log "Building app"
   pip install \
     "${PIP_ARGS[@]}" \
+    --no-cache-dir \
     --no-deps \
     --upgrade \
     "${DIR_REPO}"
