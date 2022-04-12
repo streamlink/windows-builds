@@ -62,7 +62,13 @@
       SetOutPath "$INSTDIR\ffmpeg"
       File /r "${DIR_BUILD}/ffmpeg/*.*"
       SetShellVarContext current
+
+      ; https://nsis.sourceforge.io/ConfigWrite
+      ; update "ffmpeg-ffmpeg" config var to the path of the bundled ffmpeg executable
       ${ConfigWrite} "$APPDATA\streamlink\config" "ffmpeg-ffmpeg=" "$INSTDIR\ffmpeg\ffmpeg.exe" $R0
+      ; remove "rtmp-rtmpdump" config var which was removed in Streamlink 3.0.0
+      ${ConfigWrite} "$APPDATA\streamlink\config" "rtmp-rtmpdump=" "" $R0
+
       SetShellVarContext all
       SetOutPath -
     SectionEnd
