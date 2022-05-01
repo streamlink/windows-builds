@@ -5,7 +5,7 @@
   },
   "git": {
     "repo": "https://github.com/streamlink/streamlink.git",
-    "ref": "3.2.0"
+    "ref": "4.0.0"
   },
   "assets": {
     "ffmpeg-x86": {
