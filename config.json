@@ -70,11 +70,11 @@
       "dependencies": {
         "sdists": {
           "pycountry": "22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646",
-          "setuptools": "62.1.0 --hash=sha256:47c7b0c0f8fc10eec4cf1e71c6fdadf8decaa74ffa087e68cd1c20db7ad6a592"
+          "setuptools": "62.3.2 --hash=sha256:a43bdedf853c670e5fed28e5623403bad2f73cf02f9a2774e91def6bda8265a7"
         },
         "wheels": {
           "PySocks": "1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5",
-          "certifi": "2021.10.8 --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569",
+          "certifi": "2022.5.18.1 --hash=sha256:f1d53542ee8cbedbe2118b5686372fb33c297fcd6379b050cca0ef13a597382a",
           "charset_normalizer": "2.0.12 --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df",
           "idna": "3.3 --hash=sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
           "isodate": "0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
@@ -103,11 +103,11 @@
       "dependencies": {
         "sdists": {
           "pycountry": "22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646",
-          "setuptools": "62.1.0 --hash=sha256:47c7b0c0f8fc10eec4cf1e71c6fdadf8decaa74ffa087e68cd1c20db7ad6a592"
+          "setuptools": "62.3.2 --hash=sha256:a43bdedf853c670e5fed28e5623403bad2f73cf02f9a2774e91def6bda8265a7"
         },
         "wheels": {
           "PySocks": "1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5",
-          "certifi": "2021.10.8 --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569",
+          "certifi": "2022.5.18.1 --hash=sha256:f1d53542ee8cbedbe2118b5686372fb33c297fcd6379b050cca0ef13a597382a",
           "charset_normalizer": "2.0.12 --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df",
           "idna": "3.3 --hash=sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
           "isodate": "0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
@@ -136,11 +136,11 @@
       "dependencies": {
         "sdists": {
           "pycountry": "22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646",
-          "setuptools": "62.1.0 --hash=sha256:47c7b0c0f8fc10eec4cf1e71c6fdadf8decaa74ffa087e68cd1c20db7ad6a592"
+          "setuptools": "62.3.2 --hash=sha256:a43bdedf853c670e5fed28e5623403bad2f73cf02f9a2774e91def6bda8265a7"
         },
         "wheels": {
           "PySocks": "1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5",
-          "certifi": "2021.10.8 --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569",
+          "certifi": "2022.5.18.1 --hash=sha256:f1d53542ee8cbedbe2118b5686372fb33c297fcd6379b050cca0ef13a597382a",
           "charset_normalizer": "2.0.12 --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df",
           "idna": "3.3 --hash=sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
           "isodate": "0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
@@ -169,11 +169,11 @@
       "dependencies": {
         "sdists": {
           "pycountry": "22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646",
-          "setuptools": "62.1.0 --hash=sha256:47c7b0c0f8fc10eec4cf1e71c6fdadf8decaa74ffa087e68cd1c20db7ad6a592"
+          "setuptools": "62.3.2 --hash=sha256:a43bdedf853c670e5fed28e5623403bad2f73cf02f9a2774e91def6bda8265a7"
         },
         "wheels": {
           "PySocks": "1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5",
-          "certifi": "2021.10.8 --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569",
+          "certifi": "2022.5.18.1 --hash=sha256:f1d53542ee8cbedbe2118b5686372fb33c297fcd6379b050cca0ef13a597382a",
           "charset_normalizer": "2.0.12 --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df",
           "idna": "3.3 --hash=sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
           "isodate": "0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
