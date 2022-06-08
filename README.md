@@ -86,7 +86,7 @@ with `GITSOURCE` and `GITREF` being an optional override.
 Building the installer works the same way, by running
 
 ```sh
-./build.sh "${FLAVOR}" "${GITSOURCE}" "${GITREF}"
+./build-installer.sh "${FLAVOR}" "${GITSOURCE}" "${GITREF}"
 ```
 
 with `GITSOURCE` and `GITREF` being once again optional overrides.  

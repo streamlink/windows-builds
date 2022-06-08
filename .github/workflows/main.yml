@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: |
           export SOURCE_DATE_EPOCH=$(git show -s --format=%ct)
-          ./build.sh "${{ matrix.buildname }}"
+          ./build-installer.sh "${{ matrix.buildname }}"
       - name: Get file name
         id: vars
         run: |
