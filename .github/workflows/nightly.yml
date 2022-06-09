@@ -11,10 +11,22 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - buildname: py310-x86_64
-          - buildname: py310-x86
-          - buildname: py38-x86_64
-          - buildname: py38-x86
+          - build: installer
+            buildname: py310-x86_64
+          - build: installer
+            buildname: py310-x86
+          - build: installer
+            buildname: py38-x86_64
+          - build: installer
+            buildname: py38-x86
+          - build: portable
+            buildname: py310-x86_64
+          - build: portable
+            buildname: py310-x86
+          - build: portable
+            buildname: py38-x86_64
+          - build: portable
+            buildname: py38-x86
     steps:
       - uses: actions/checkout@v3
         with:
@@ -28,13 +40,12 @@ jobs:
       - name: Build
         run: |
           export SOURCE_DATE_EPOCH=$(git show -s --format=%ct)
-          ./build-installer.sh "${{ matrix.buildname }}" "" master
+          "./build-${{ matrix.build }}.sh" "${{ matrix.buildname }}" "" master
       - name: Get file name
         id: vars
         run: |
-          filename="$(cd dist/ && ls *.exe)"
-          echo "::set-output name=installer_name::${filename%%.exe}"
+          echo "::set-output name=file_name::$(cd dist && ls *.*)"
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.vars.outputs.installer_name }}
-          path: dist/*.exe
+          name: ${{ steps.vars.outputs.file_name }}
+          path: dist/*
