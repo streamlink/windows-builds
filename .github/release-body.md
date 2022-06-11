@@ -16,6 +16,8 @@ For more information, please see Streamlink's [install docs](https://streamlink.
 Streamlink's own git repository and issue tracker can be found at [streamlink/streamlink](https://github.com/streamlink/streamlink).  
 Before continuing, please read [Streamlink's changelog of this release](https://streamlink.github.io/changelog.html).
 
+The windows-builds changelog can be found [here](https://github.com/streamlink/windows-builds/blob/master/CHANGELOG.md).
+
 ## ⚙️ How to use
 
 See the detailed [CLI guide](https://streamlink.github.io/cli.html) on Streamlink's website.

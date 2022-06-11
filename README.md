@@ -5,6 +5,8 @@ Windows installer and portable archive builds for [Streamlink](https://github.co
 
 Please see [Streamlink's install documentation](https://streamlink.github.io/install.html) for more details and different install methods.
 
+The windows-builds changelog can be found [here](https://github.com/streamlink/windows-builds/blob/master/CHANGELOG.md).
+
 
 ## Contents
 
