@@ -1,4 +1,4 @@
-streamlink/windows-installer
+streamlink/windows-builds
 ====
 
 Windows installer and portable archive builds for [Streamlink](https://github.com/streamlink/streamlink).
@@ -28,13 +28,13 @@ Please see [Streamlink's install documentation](https://streamlink.github.io/ins
 ### Stable releases
 
 Builds of official Streamlink releases.  
-Download from the [releases page](https://github.com/streamlink/windows-installer/releases).
+Download from the [releases page](https://github.com/streamlink/windows-builds/releases).
 
 ### Nightly builds  
 
 Built once each day at midnight UTC from Streamlink's master branch.  
 This includes the most recent changes, but is not considered "stable".  
-Download from the build-artifacts of the [scheduled nightly build runs](https://github.com/streamlink/windows-installer/actions?query=event%3Aschedule+is%3Asuccess+branch%3Amaster) (requires a GitHub login).
+Download from the build-artifacts of the [scheduled nightly build runs](https://github.com/streamlink/windows-builds/actions?query=event%3Aschedule+is%3Asuccess+branch%3Amaster) (requires a GitHub login).
 
 
 ## Notes

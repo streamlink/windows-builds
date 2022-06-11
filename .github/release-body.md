@@ -6,7 +6,7 @@ Windows installers and Windows portable archives for Streamlink, which contain
 - Streamlink and its dependencies
 - FFmpeg, required for muxing streams
 
-Please see the [notes in the README.md](https://github.com/streamlink/windows-installer#notes) about the differences between the installers and portable builds.
+Please see the [notes in the README.md](https://github.com/streamlink/windows-builds#notes) about the differences between the installers and portable builds.
 
 Users of Windows 7 need to choose the release files based on Python 3.8.  
 For more information, please see Streamlink's [install docs](https://streamlink.github.io/install.html#windows-binaries).
