@@ -1,7 +1,7 @@
 Changelog - streamlink/windows-builds
 ====
 
-## master
+## 4.1.0-3 (2022-06-11)
 
 - Implemented portable builds
 - Renamed repository from streamlink/windows-installer to streamlink/windows-builds
