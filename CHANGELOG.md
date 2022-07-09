@@ -1,6 +1,10 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 4.2.0-1 (2022-07-09)
+
+- Updated Streamlink to 4.2.0, updated its dependencies
+
 ## 4.1.0-3 (2022-06-11)
 
 - Implemented portable builds
