@@ -71,7 +71,7 @@ Both the embedded Python builds and FFmpeg builds are unofficial and unsigned, a
 - [Python 3.8+](https://www.python.org/) and the most recent version of [pip](https://pip.pypa.io/en/stable/)
   - [virtualenv](https://pypi.org/project/virtualenv/)
   - [pynsist](https://pypi.org/project/pynsist/) >=2.8
-  - [distlib](https://pypi.org/project/distlib/) >=0.3.3, !=0.3.4
+  - [distlib](https://pypi.org/project/distlib/) >=0.3.5
   - [freezegun](https://pypi.org/project/freezegun/)
 - [NSIS](https://nsis.sourceforge.io/Main_Page)
 - [jq](https://stedolan.github.io/jq/)

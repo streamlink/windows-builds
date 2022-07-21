@@ -1,6 +1,11 @@
 Changelog - streamlink/windows-builds
 ====
 
+## master
+
+- Upgraded `distlib` build dependency from `0.3.3` to `0.3.5`
+- Added `requirements.txt` for easier build dependency specification
+
 ## 4.2.0-1 (2022-07-09)
 
 - Updated Streamlink to 4.2.0, updated its dependencies

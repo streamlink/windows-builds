@@ -1,0 +1,4 @@
+distlib==0.3.5
+freezegun
+pynsist==2.8
+wheel
