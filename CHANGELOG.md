@@ -3,6 +3,7 @@ Changelog - streamlink/windows-builds
 
 ## master
 
+- Updated FFmpeg to 5.1
 - Added `requirements.txt` for easier build dependency specification
 
 ## 4.2.0-1 (2022-07-09)

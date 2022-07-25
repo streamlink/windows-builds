@@ -9,11 +9,11 @@
   },
   "assets": {
     "ffmpeg-x86": {
-      "filename": "ffmpeg-n5.0-4-g911d7f167c-win32-gpl-5.0.zip",
-      "url": "https://github.com/streamlink/FFmpeg-Builds/releases/download/20220320-1/ffmpeg-n5.0-4-g911d7f167c-win32-gpl-5.0.zip",
-      "sha256": "809c3c727fedcf55313f4a99e8a65d2cea65e9b19cf973dbed6ab2f7aea1160b",
+      "filename": "ffmpeg-n5.1-1-g6d83c5f876-win32-gpl-5.1.zip",
+      "url": "https://github.com/streamlink/FFmpeg-Builds/releases/download/20220725-1/ffmpeg-n5.1-1-g6d83c5f876-win32-gpl-5.1.zip",
+      "sha256": "61d09e50f00d9f79e853b323bf3f0c6e979917610ee042f5f69a74a4658f6a8f",
       "type": "zip",
-      "sourcedir": "ffmpeg-n5.0-4-g911d7f167c-win32-gpl-5.0",
+      "sourcedir": "ffmpeg-n5.1-1-g6d83c5f876-win32-gpl-5.1",
       "targetdir": "ffmpeg",
       "files": [
         {
@@ -31,11 +31,11 @@
       ]
     },
     "ffmpeg-x86_64": {
-      "filename": "ffmpeg-n5.0-4-g911d7f167c-win64-gpl-5.0.zip",
-      "url": "https://github.com/streamlink/FFmpeg-Builds/releases/download/20220320-1/ffmpeg-n5.0-4-g911d7f167c-win64-gpl-5.0.zip",
-      "sha256": "55f632f700d9ec7154a16421cabbf97b87b7d41c4361654630a9f0a894d76851",
+      "filename": "ffmpeg-n5.1-1-g6d83c5f876-win64-gpl-5.1.zip",
+      "url": "https://github.com/streamlink/FFmpeg-Builds/releases/download/20220725-1/ffmpeg-n5.1-1-g6d83c5f876-win64-gpl-5.1.zip",
+      "sha256": "528305af18f23c9ce9f9076533213b454c0ed2fbd15ead457809e783af2e60e2",
       "type": "zip",
-      "sourcedir": "ffmpeg-n5.0-4-g911d7f167c-win64-gpl-5.0",
+      "sourcedir": "ffmpeg-n5.1-1-g6d83c5f876-win64-gpl-5.1",
       "targetdir": "ffmpeg",
       "files": [
         {
