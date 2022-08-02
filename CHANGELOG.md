@@ -1,7 +1,7 @@
 Changelog - streamlink/windows-builds
 ====
 
-## master
+## 4.2.0-2 (2022-08-02)
 
 - Fixed missing dist-info directory in installer, causing an error when `--loglevel=debug` was set due to missing metadata of the streamlink package
 - Updated FFmpeg to 5.1
