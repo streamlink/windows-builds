@@ -83,6 +83,7 @@ TEMP=$(mktemp -d) && trap "rm -rf '${TEMP}'" EXIT || exit 255
 DIR_REPO="${TEMP}/source.git"
 DIR_BUILD="${TEMP}/build"
 DIR_ASSETS="${TEMP}/assets"
+DIR_PKGS="${TEMP}/pkgs"
 DIR_WHEELS="${TEMP}/wheels"
 
 mkdir -p \
@@ -141,9 +142,21 @@ build_app() {
   pip install \
     "${PIP_ARGS[@]}" \
     --no-cache-dir \
+    --platform="${platform}" \
+    --python-version="${pythonversion}" \
+    --implementation="${implementation}" \
     --no-deps \
+    --target="${DIR_PKGS}" \
+    --no-compile \
     --upgrade \
     "${DIR_REPO}"
+
+  log "Removing unneeded dist files"
+  ( set -x; rm -r "${DIR_PKGS}/bin" "${DIR_PKGS}"/*.dist-info/direct_url.json; )
+  sed -i -E \
+    -e '/^.+\.dist-info\/direct_url\.json,sha256=/d' \
+    -e '/^\.\.\/\.\.\//d' \
+    "${DIR_PKGS}"/*.dist-info/RECORD
 
   log "Creating icon"
   for size in 16 32 48 256; do
@@ -232,9 +245,10 @@ prepare_installer() {
   log "Reading version string"
   local versionstring versionplain versionmeta vi_version installerversion
 
-  versionstring="$(python -c "from importlib.metadata import version;print(version('${appname}'))")"
+  versionstring="$(PYTHONPATH="${DIR_PKGS}" python -c "from importlib.metadata import version;print(version('${appname}'))")"
   versionplain="${versionstring%%+*}"
   versionmeta="${versionstring##*+}"
+  distinfo="${DIR_PKGS}/${appname}-${versionstring}.dist-info"
 
   # Not a custom git reference (assume that only tagged releases are used as source)
   # Use plain version string with app release number and no abbreviated commit ID
@@ -269,18 +283,20 @@ prepare_installer() {
   env -i \
     DIR_BUILD="${DIR_BUILD}" \
     DIR_WHEELS="${DIR_WHEELS}" \
+    DIR_DISTINFO="${distinfo}" \
     VERSION="${installerversion}" \
     PYTHONVERSION="${pythonversionfull}" \
     BITNESS="$([[ "${platform}" == "win_amd64" ]] && echo 64 || echo 32)" \
     INSTALLER_NAME="${DIR_DIST}/${appname}-${installerversion}-${BUILDNAME}.exe" \
     NSI_TEMPLATE="installer.nsi" \
-    envsubst '$DIR_BUILD $DIR_WHEELS $VERSION $ENTRYPOINT $PYTHONVERSION $BITNESS $INSTALLER_NAME $NSI_TEMPLATE' \
+    envsubst '$DIR_BUILD $DIR_DISTINFO $DIR_WHEELS $VERSION $ENTRYPOINT $PYTHONVERSION $BITNESS $INSTALLER_NAME $NSI_TEMPLATE' \
     < "${ROOT}/installer.cfg" \
     > "${DIR_BUILD}/installer.cfg"
 }
 
 build_installer() {
-  PYNSIST_CACHE_DIR="${DIR_BUILD}" pynsist "${DIR_BUILD}/installer.cfg"
+  log "Building installer"
+  PYTHONPATH="${DIR_PKGS}" PYNSIST_CACHE_DIR="${DIR_BUILD}" pynsist "${DIR_BUILD}/installer.cfg"
 }
 
 

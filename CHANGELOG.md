@@ -3,6 +3,7 @@ Changelog - streamlink/windows-builds
 
 ## master
 
+- Fixed missing dist-info directory in installer, causing an error when `--loglevel=debug` was set due to missing metadata of the streamlink package
 - Updated FFmpeg to 5.1
 - Added `requirements.txt` for easier build dependency specification
 
