@@ -1,7 +1,7 @@
 Changelog - streamlink/windows-builds
 ====
 
-## master
+## 4.3.0-1 (2022-08-15)
 
 - Updated Python from 3.10.5 to 3.10.6
 
