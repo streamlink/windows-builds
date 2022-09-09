@@ -1,17 +1,31 @@
 name: Issue
-description: An issue with one of Streamlink's Windows installers
+description: An issue with one of Streamlink's Windows builds
 body:
   - type: markdown
     attributes:
       value: |
-        ## Thanks for reporting an issue with Streamlink's Windows installer!
+        ## Thanks for reporting an issue with Streamlink's Windows builds!
 
-        **Issues and questions related Streamlink itself DO NOT BELONG here and will be closed immediately.**
+        **Issues and questions related to Streamlink itself DO NOT BELONG here and will be closed immediately.**
+  - type: dropdown
+    attributes:
+      label: Build flavor
+      options:
+        - Installer - Python 3.10 - x86_64 (64 bit)
+        - Installer - Python 3.10 - x86 (32 bit)
+        - Installer - Python 3.8 - x86_64 (64 bit)
+        - Installer - Python 3.8 - x86 (32 bit)
+        - Portable - Python 3.10 - x86_64 (64 bit)
+        - Portable - Python 3.10 - x86 (32 bit)
+        - Portable - Python 3.8 - x86_64 (64 bit)
+        - Portable - Python 3.8 - x86 (32 bit)
+    validations:
+      required: true
   - type: input
     attributes:
-      label: Installer flavor and version
+      label: Build version
       description: |
-        The exact file name of the installer.
+        The exact file name of the installer or portable build.
   - type: textarea
     attributes:
       label: Description
