@@ -8,6 +8,7 @@ Changelog - streamlink/windows-builds
 
 ## 4.3.0-1 (2022-08-15)
 
+- Updated Streamlink to 4.3.0, updated its dependencies
 - Updated Python from 3.10.5 to 3.10.6
 
 ## 4.2.0-2 (2022-08-02)
