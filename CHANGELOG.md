@@ -1,6 +1,10 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 5.0.1-1 (2022-09-22)
+
+- Updated Streamlink to 5.0.1
+
 ## 5.0.0-1 (2022-09-16)
 
 - Updated Streamlink to 5.0.0, updated its dependencies
