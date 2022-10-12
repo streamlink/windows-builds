@@ -44,7 +44,7 @@ jobs:
       - name: Get file name
         id: vars
         run: |
-          echo "::set-output name=file_name::$(cd dist && ls *.*)"
+          echo "file_name=$(cd dist && ls *.*)" >> $GITHUB_OUTPUT
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ steps.vars.outputs.file_name }}
