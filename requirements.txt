@@ -1,4 +1,4 @@
-distlib==0.3.3
+distlib ==0.3.6
 freezegun
-pynsist==2.8
+pynsist ==2.8
 wheel
