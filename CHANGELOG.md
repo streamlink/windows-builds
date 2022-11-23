@@ -1,6 +1,13 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 5.1.0-1 (2022-11-14)
+
+- Updated Streamlink to 5.1.0, updated its dependencies
+- Updated Python from 3.8.14 to 3.8.15
+- Updated Python from 3.10.7 to 3.10.8
+- Bumped distlib from 0.3.3 to 0.3.6
+
 ## 5.0.1-1 (2022-09-22)
 
 - Updated Streamlink to 5.0.1
@@ -9,7 +16,7 @@ Changelog - streamlink/windows-builds
 
 - Updated Streamlink to 5.0.0, updated its dependencies
 - Updated Python from 3.8.13 to 3.8.14
-- Updated Python from 3.10.5 to 3.10.6
+- Updated Python from 3.10.6 to 3.10.7
 
 ## 4.3.0-1 (2022-08-15)
 
