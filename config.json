@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "streamlink",
-    "rel": "1"
+    "rel": "2"
   },
   "git": {
     "repo": "https://github.com/streamlink/streamlink.git",
