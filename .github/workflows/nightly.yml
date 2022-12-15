@@ -2,7 +2,7 @@ name: Nightly builds
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
 
 jobs:
   build:
@@ -12,17 +12,17 @@ jobs:
       matrix:
         include:
           - build: installer
-            buildname: py310-x86_64
+            buildname: py311-x86_64
           - build: installer
-            buildname: py310-x86
+            buildname: py311-x86
           - build: installer
             buildname: py38-x86_64
           - build: installer
             buildname: py38-x86
           - build: portable
-            buildname: py310-x86_64
+            buildname: py311-x86_64
           - build: portable
-            buildname: py310-x86
+            buildname: py311-x86
           - build: portable
             buildname: py38-x86_64
           - build: portable
