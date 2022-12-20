@@ -1,9 +1,14 @@
 Changelog - streamlink/windows-builds
 ====
 
+## master
+
+- Updated FFmpeg from n5.1-1 to n5.1.2-9
+
 ## 5.1.2-2 (2022-12-14)
 
 - Switched from Python 3.10 to Python 3.11
+- Updated Python from 3.8.15 to 3.8.16
 - Updated dependencies
 
 ## 5.1.2-1 (2022-12-03)
@@ -39,7 +44,7 @@ Changelog - streamlink/windows-builds
 ## 4.2.0-2 (2022-08-02)
 
 - Fixed missing dist-info directory in installer, causing an error when `--loglevel=debug` was set due to missing metadata of the streamlink package
-- Updated FFmpeg to 5.1
+- Updated FFmpeg to n5.1-1
 - Added `requirements.txt` for easier build dependency specification
 
 ## 4.2.0-1 (2022-07-09)
