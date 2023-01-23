@@ -1,8 +1,9 @@
 Changelog - streamlink/windows-builds
 ====
 
-## master
+## 5.2.1-1 (2023-01-23)
 
+- Updated Streamlink to 5.2.1, updated its dependencies
 - Updated FFmpeg from n5.1-1 to n5.1.2-9
 
 ## 5.1.2-2 (2022-12-14)
