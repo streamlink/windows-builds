@@ -17,10 +17,10 @@ The windows-builds changelog can be found [here](https://github.com/streamlink/w
 
 ## Flavors
 
-- Python 3.10, x86_64
-- Python 3.10, x86
-- Python 3.8, x86_64
-- Python 3.8, x86
+- Latest Python, x86\_64 (64 bit) - recommended
+- Latest Python, x86 (32 bit)
+- Python 3.8, x86\_64 (64 bit) - for Windows 7
+- Python 3.8, x86 (32 bit) - for Windows 7
 
 [Python 3.8](https://endoflife.date/python) is the last Python branch which still supports [Windows 7](https://endoflife.date/windows).
 
