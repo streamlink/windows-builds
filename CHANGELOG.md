@@ -1,10 +1,10 @@
 Changelog - streamlink/windows-builds
 ====
 
-## master
+## 5.3.0-1 (2023-02-18)
 
+- Updated Streamlink to 5.3.0, updated its dependencies
 - Updated Python from 3.11.1 to 3.11.2
-- Updated dependencies
 
 ## 5.2.1-1 (2023-01-23)
 
