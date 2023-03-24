@@ -6,17 +6,28 @@ body:
       value: |
         ## Thanks for reporting an issue with Streamlink's Windows builds!
 
+        This issue tracker is only meant for reporting issues about Streamlink's Windows installer or Streamlink's Windows portable builds.  
+        For example, the installer isn't doing what it's supposed to do, or something is missing in the distribution, etc.
+
         **Issues and questions related to Streamlink itself DO NOT BELONG here and will be closed immediately.**
+  - type: checkboxes
+    attributes:
+      label: Checklist
+      options:
+        - label: I understand that this is the issue tracker for Streamlink's Windows builds and not for Streamlink itself
+          required: true
+        - label: I am using the latest stable or nightly release
+          required: true
   - type: dropdown
     attributes:
       label: Build flavor
       options:
-        - Installer - Python 3.10 - x86_64 (64 bit)
-        - Installer - Python 3.10 - x86 (32 bit)
+        - Installer - Latest Python - x86_64 (64 bit)
+        - Installer - Latest Python - x86 (32 bit)
         - Installer - Python 3.8 - x86_64 (64 bit)
         - Installer - Python 3.8 - x86 (32 bit)
-        - Portable - Python 3.10 - x86_64 (64 bit)
-        - Portable - Python 3.10 - x86 (32 bit)
+        - Portable - Latest Python - x86_64 (64 bit)
+        - Portable - Latest Python - x86 (32 bit)
         - Portable - Python 3.8 - x86_64 (64 bit)
         - Portable - Python 3.8 - x86 (32 bit)
     validations:
@@ -31,6 +42,6 @@ body:
       label: Description
       description: |
         Explain the issue as thoroughly as you can and list the steps which lead to the problem.
-        Please also provide details about your operating system and its configuration if you can.
+        Please also provide details about your operating system, its configuration and the environment, if you can.
     validations:
       required: true
