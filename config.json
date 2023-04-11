@@ -125,10 +125,10 @@
       "pythonversion": "3.11",
       "platform": "win32",
       "pythonembed": {
-        "version": "3.11.2",
-        "filename": "python-v3.11.2-0-g878ead1a-windows-x86-embed.zip",
-        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20230208-1/python-v3.11.2-0-g878ead1a-windows-x86-embed.zip",
-        "sha256": "5ef712b00af835f98bbd77ed8ead19294c1741b04cec38d6d7b6439be0094890"
+        "version": "3.11.3",
+        "filename": "python-v3.11.3-0-gf3909b8b-windows-x86-embed.zip",
+        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20230411-1/python-v3.11.3-0-gf3909b8b-windows-x86-embed.zip",
+        "sha256": "c0fd9b434662610126b0aa4823e78e5499c04fcbb86831fb20fb374e1189924b"
       },
       "assets": [
         "ffmpeg-x86"
@@ -158,10 +158,10 @@
       "pythonversion": "3.11",
       "platform": "win_amd64",
       "pythonembed": {
-        "version": "3.11.2",
-        "filename": "python-v3.11.2-0-g878ead1a-windows-x64-embed.zip",
-        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20230208-1/python-v3.11.2-0-g878ead1a-windows-x64-embed.zip",
-        "sha256": "dc24339920aee9f45a737b17dd001264c72856ff6f1c6734461ec245dc01204e"
+        "version": "3.11.3",
+        "filename": "python-v3.11.3-0-gf3909b8b-windows-x64-embed.zip",
+        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20230411-1/python-v3.11.3-0-gf3909b8b-windows-x64-embed.zip",
+        "sha256": "b49761a18c1cf3ff917a0a0533c8d3cfe2a1465f324d088c6297a9e74f90d94a"
       },
       "assets": [
         "ffmpeg-x86_64"
