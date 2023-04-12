@@ -1,8 +1,10 @@
 Changelog - streamlink/windows-builds
 ====
 
-## master
+## 5.4.0-1 (2023-04-12)
 
+- Updated Streamlink to 5.4.0, updated its dependencies
+- Updated Python from 3.11.2 to 3.11.3
 - Updated FFmpeg from n5.1.2-9 to n6.0-3
 
 ## 5.3.1-1 (2023-02-25)
