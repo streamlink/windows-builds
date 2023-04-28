@@ -1,22 +1,19 @@
 ## 📦 Release contents
 
-Windows installers and Windows portable archives for Streamlink, which contain
+Windows installers and Windows portable archives for [Streamlink](https://github.com/streamlink/streamlink), which contain
 
 - an embedded Python environment
 - Streamlink and its dependencies
 - FFmpeg, required for muxing streams
 
-Please see the [notes in the README.md](https://github.com/streamlink/windows-builds#notes) about the differences between the installers and portable builds.
+Please see the [README.md](https://github.com/streamlink/windows-builds#notes) about the differences between the installers and portable archives.
 
-Users of Windows 7 need to choose the release files based on Python 3.8.  
 For more information, please see Streamlink's [install docs](https://streamlink.github.io/install.html#windows-binaries).
 
-## 📝 Source code and changelog
+## 📝 Changelog
 
-Streamlink's own git repository and issue tracker can be found at [streamlink/streamlink](https://github.com/streamlink/streamlink).  
-Before continuing, please read [Streamlink's changelog of this release](https://streamlink.github.io/changelog.html).
-
-The windows-builds changelog can be found [here](https://github.com/streamlink/windows-builds/blob/master/CHANGELOG.md).
+- [streamlink/streamlink](https://github.com/streamlink/streamlink/releases) (release changelog)
+- [streamlink/windows-builds](https://github.com/streamlink/windows-builds/blob/master/CHANGELOG.md) (packaging changelog)
 
 ## ⚙️ How to use
 
