@@ -60,9 +60,9 @@
       "platform": "win32",
       "pythonembed": {
         "version": "3.8.16",
-        "filename": "python-v3.8.16-0-g1e3d2d52-windows-x86-embed.zip",
-        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20221210-1/python-v3.8.16-0-g1e3d2d52-windows-x86-embed.zip",
-        "sha256": "80b69152cb3795491016bc7ce84244824c749e8a1ea6716228337be70d0c6e44"
+        "filename": "python-v3.8.16-18-g9f89c471-windows-x86-embed.zip",
+        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20230522-1/python-v3.8.16-18-g9f89c471-windows-x86-embed.zip",
+        "sha256": "8740b7b140c49c066bb09eca100ce029aec38c4f1cf7e369b04ea7807d449cb8"
       },
       "assets": [
         "ffmpeg-x86"
@@ -93,9 +93,9 @@
       "platform": "win_amd64",
       "pythonembed": {
         "version": "3.8.16",
-        "filename": "python-v3.8.16-0-g1e3d2d52-windows-x64-embed.zip",
-        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20221210-1/python-v3.8.16-0-g1e3d2d52-windows-x64-embed.zip",
-        "sha256": "5675dff93c78eb4029ecb4efc863a254c4ccec9748ff990db53565f0e2449699"
+        "filename": "python-v3.8.16-18-g9f89c471-windows-x64-embed.zip",
+        "url": "https://github.com/streamlink/python-windows-embed/releases/download/20230522-1/python-v3.8.16-18-g9f89c471-windows-x64-embed.zip",
+        "sha256": "403e8bb5ba8b90c65a2b152f688e075ef81823a866e5de3cfe9c0ee100c0c5d8"
       },
       "assets": [
         "ffmpeg-x86_64"
