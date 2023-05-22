@@ -1,6 +1,11 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 5.5.1-2 (2023-05-22)
+
+- Updated dependencies ([urllib3 2.x](https://urllib3.readthedocs.io/en/2.0.2/v2-migration-guide.html#what-are-the-important-changes), [requests 2.31.0](https://github.com/psf/requests/releases/tag/v2.31.0))
+- Updated Python from 3.8.16 to 3.8.16-18-g9f89c471
+
 ## 5.5.1-1 (2023-05-08)
 
 - Updated Streamlink to 5.5.1, updated its dependencies
