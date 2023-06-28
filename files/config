@@ -86,4 +86,4 @@ ffmpeg-ffmpeg=ffmpeg.exe
 #loglevel=debug
 
 # Number of threads to use when streaming HLS streams
-#hls-segment-threads=1
+#stream-segment-threads=1
