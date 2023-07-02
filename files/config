@@ -1,36 +1,34 @@
+# Streamlink config file
+
+# Please see the Streamlink CLI documentation for all available options:
+# https://streamlink.github.io/cli.html#command-line-usage
+
 # The format is option=value
 # Lines starting with a # are considered comments and are ignored.
 
-# Please see the Streamlink CLI documentation for all available options
-# and their descriptions. All leading dashes need to be ignored,
+# All leading dashes need to be ignored,
 # e.g. --default-stream=STREAM becomes default-stream=STREAM
-# https://streamlink.github.io/cli.html#command-line-usage
 
+# Option values must not be quoted, or quotes become part of the option's actual value.
+
+# ----
 
 # By default, Streamlink will attempt to locate VLC on your system
 # and use that, but you can also specify the location of a player yourself.
-
-# Important: You must use a quoted path if there are spaces in it. This
-# is because the player command is parsed like a shell command, to allow
-# parameters to be passed to the player when not using the player-args option.
-
-# Here are a couple of player examples:
+# Here are a couple of common player path:
 
 # VLC
-#player="C:\Program Files (x86)\VideoLAN\VLC\vlc.exe"
-#player="C:\Program Files\VideoLAN\VLC\vlc.exe"
-# Using --file-caching is recommended, but is only supported in VLC 2.0+
-#player="C:\Program Files (x86)\VideoLAN\VLC\vlc.exe" --file-caching=5000
-#player="C:\Program Files\VideoLAN\VLC\vlc.exe" --file-caching=5000
+#player=C:\Program Files\VideoLAN\VLC\vlc.exe
+#player=C:\Program Files (x86)\VideoLAN\VLC\vlc.exe
 
-# MPC-HC, must be at least version 1.7 to be used
-#player="C:\Program Files (x86)\MPC-HC\mpc-hc.exe"
-#player="C:\Program Files\MPC-HC\mpc-hc64.exe"
+# MPC-HC
+#player=C:\Program Files\MPC-HC\mpc-hc64.exe
+#player=C:\Program Files (x86)\MPC-HC\mpc-hc.exe
 
 # MPV
-#player="C:\Program Files\mpv-x86_64\mpv.exe"
+#player=C:\Program Files\mpv-x86_64\mpv.exe
 
-# Alternatively, player arguments can also be set via the player-args option.
+# Custom player arguments can be set using the player-args option.
 # Please see the documentation of the used player for its available arguments.
 
 # VLC
