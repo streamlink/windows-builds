@@ -1,5 +1,20 @@
 !include "FileFunc.nsh"
 !include "TextFunc.nsh"
+
+!macro NSD_SetUserData hwnd data
+  nsDialogs::SetUserData ${hwnd} ${data}
+!macroend
+!define NSD_SetUserData `!insertmacro NSD_SetUserData`
+
+!macro NSD_GetUserData hwnd outvar
+  nsDialogs::GetUserData ${hwnd}
+  Pop ${outvar}
+!macroend
+!define NSD_GetUserData `!insertmacro NSD_GetUserData`
+
+Var configFileRadioBtn
+Var configFileOverwrite
+
 [% extends "pyapp_msvcrt.nsi" %]
 
 [% block modernui %]
@@ -43,6 +58,40 @@
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "Streamlink Installer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" ""
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${VERSION}"
+
+  Function pageConfigFile
+    !insertmacro MUI_HEADER_TEXT "Streamlink config file" "Located at: %APPDATA%\streamlink\config"
+
+    nsDialogs::Create 1018
+    Pop $0
+    ${If} $0 == error
+      Abort
+    ${EndIf}
+
+    ${NSD_CreateRadioButton} 0 0 100% 12u "Keep existing config file, or create a new one if it doesn't exist yet"
+      Pop $configFileRadioBtn
+      ${NSD_AddStyle} $configFileRadioBtn ${WS_GROUP}
+      ${NSD_SetUserData} $configFileRadioBtn "off"
+      ${NSD_OnClick} $configFileRadioBtn configFileRadioClick
+    ${NSD_Check} $configFileRadioBtn
+    ${NSD_CreateRadioButton} 0 12u 100% 12u "Overwrite existing config file, or create a new one if it doesn't exist yet"
+      Pop $configFileRadioBtn
+      ${NSD_SetUserData} $configFileRadioBtn "on"
+      ${NSD_OnClick} $configFileRadioBtn configFileRadioClick
+
+    ${NSD_CreateHLine} 0 24u 100%
+      Pop $0
+    ${NSD_CreateLabel} 0 36u 100% 36u "NOTE: New major version releases of Streamlink may contain breaking changes that require modifications of old config files"
+      Pop $0
+
+    nsDialogs::Show
+  FunctionEnd
+
+  Function configFileRadioClick
+    Pop $configFileRadioBtn
+    ${NSD_GetUserData} $configFileRadioBtn $configFileOverwrite
+  FunctionEnd
+
 [% endblock %]
 
 ; UI pages
@@ -51,6 +100,7 @@
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MULTIUSER_PAGE_INSTALLMODE
   !insertmacro MUI_PAGE_DIRECTORY
+  page custom pageConfigFile
   !insertmacro MUI_PAGE_INSTFILES
   !insertmacro MUI_PAGE_FINISH
 [% endblock ui_pages %]
@@ -91,9 +141,15 @@
   [[ super() ]]
   ; Install config file
   SetShellVarContext current # install the config file for the current user
-  SetOverwrite off # never overwrite the config file
-  SetOutPath $APPDATA\streamlink
-  File /r "${DIR_BUILD}/config"
+  ${If} $configFileOverwrite == on
+    SetOverwrite on
+    SetOutPath $APPDATA\streamlink
+    File /r "${DIR_BUILD}/config"
+  ${Else}
+    SetOverwrite off
+    SetOutPath $APPDATA\streamlink
+    File /r "${DIR_BUILD}/config"
+  ${EndIf}
   SetOverwrite ifnewer
   SetOutPath -
   SetShellVarContext all
