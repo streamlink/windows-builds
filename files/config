@@ -15,7 +15,7 @@
 
 # By default, Streamlink will attempt to locate VLC on your system
 # and use that, but you can also specify the location of a player yourself.
-# Here are a couple of common player path:
+# Here are a couple of common player paths:
 
 # VLC
 #player=C:\Program Files\VideoLAN\VLC\vlc.exe
