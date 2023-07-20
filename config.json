@@ -1,11 +1,11 @@
 {
   "app": {
     "name": "streamlink",
-    "rel": "2"
+    "rel": "1"
   },
   "git": {
     "repo": "https://github.com/streamlink/streamlink.git",
-    "ref": "5.5.1"
+    "ref": "6.0.0"
   },
   "assets": {
     "ffmpeg-x86": {

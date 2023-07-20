@@ -1,6 +1,14 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 6.0.0-1 (2023-07-20)
+
+- Updated Streamlink to 6.0.0, updated its dependencies
+- Updated Python from 3.11.3 to 3.11.4
+- Updated Python from 3.8.16 to 3.8.17
+- Updated Streamlink config file ([`--player` breaking changes](https://streamlink.github.io/migrations.html#player-path-only-player-cli-argument))
+- Added new page to installer for overwriting the existing config file
+
 ## 5.5.1-2 (2023-05-22)
 
 - Updated dependencies ([urllib3 2.x](https://urllib3.readthedocs.io/en/2.0.2/v2-migration-guide.html#what-are-the-important-changes), [requests 2.31.0](https://github.com/psf/requests/releases/tag/v2.31.0))
