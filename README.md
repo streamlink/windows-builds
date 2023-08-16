@@ -90,10 +90,10 @@ Each build flavor includes the source of an embedded Python build and the fixed 
 In order to get an update for the dependency JSON data of a specific build flavor, run
 
 ```sh
-./get-dependencies.sh "${FLAVOR}" "${GITSOURCE}" "${GITREF}"
+./get-dependencies.sh "${FLAVOR}" "${GITSOURCE}" "${GITREF}" "${OPT_DEPS}"
 ```
 
-with `GITSOURCE` and `GITREF` being an optional override.
+with `GITSOURCE`, `GITREF` and `OPT_DEPS` being an optional override.
 
 Building the installers and portable archives works the same way, by running
 

@@ -19,6 +19,8 @@ set -eo pipefail
 BUILDNAME="${1}"
 GITREPO="${2}"
 GITREF="${3}"
+OPT_DEPSPEC=("${@}")
+OPT_DEPSPEC=("${OPT_DEPSPEC[@]:3}")
 
 declare -A DEPS=(
   [gawk]=gawk
@@ -120,7 +122,8 @@ get_deps() {
   pip download \
     "${PIP_ARGS[@]}" \
     --no-binary=:all: \
-    "git+file://${DIR_REPO}@${gitref}"
+    "git+file://${DIR_REPO}@${gitref}" \
+    "${OPT_DEPSPEC[@]}"
   remove_ignored_packages
 
   log "Downloading wheels"
@@ -130,7 +133,8 @@ get_deps() {
     --implementation="${implementation}" \
     --python-version="${pythonversion}" \
     --platform="${platform}" \
-    "git+file://${DIR_REPO}@${gitref}"
+    "git+file://${DIR_REPO}@${gitref}" \
+    "${OPT_DEPSPEC[@]}"
   remove_ignored_packages
 
   log "Generating lockfile for build ${BUILDNAME}"
