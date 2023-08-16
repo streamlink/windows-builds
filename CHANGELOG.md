@@ -1,6 +1,11 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 6.1.0-1 (2023-08-16)
+
+- Updated Streamlink to 6.1.0, updated its dependencies
+- Added param to get-dependencies script for optional dependency overrides
+
 ## 6.0.1-1 (2023-08-02)
 
 - Updated Streamlink to 6.0.1, updated its dependencies
