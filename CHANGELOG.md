@@ -1,6 +1,12 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 6.1.0-2 (2023-08-27)
+
+- Updated Python from 3.11.4 to 3.11.5 (OpenSSL 1.1.1u -> 3.0.9)
+- Updated Python from 3.8.17 to 3.8.18
+- Fixed DLL-loading issues of embedded Python builds ("SSL module is not available")
+
 ## 6.1.0-1 (2023-08-16)
 
 - Updated Streamlink to 6.1.0, updated its dependencies
