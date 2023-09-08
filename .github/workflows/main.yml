@@ -28,7 +28,7 @@ jobs:
           - build: portable
             buildname: py38-x86
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-python@v4
@@ -59,7 +59,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: mkdir dist
       - uses: actions/download-artifact@v3
         with:
