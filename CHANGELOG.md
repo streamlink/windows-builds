@@ -1,6 +1,10 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 6.2.0-1 (2023-09-14)
+
+- Updated Streamlink to 6.2.0, updated its dependencies
+
 ## 6.1.0-2 (2023-08-27)
 
 - Updated Python from 3.11.4 to 3.11.5 (OpenSSL 1.1.1u -> 3.0.9)
