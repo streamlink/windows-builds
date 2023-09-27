@@ -45,7 +45,11 @@ builds:
       sha256: 8687a95396e7dcc2baa1ead6bd252c0e5ece4088a590df2cec529b257e6eafb7
     assets:
       - ffmpeg-x86
-    dependency_override: []
+    # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
+    # https://github.com/pypa/pip/issues/11664
+    dependency_override:
+      # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
+      - cffi>=1.14
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
@@ -83,7 +87,11 @@ builds:
       sha256: c9ab150f873c1641f7de0f8779881a09efe1c87a37e9846dfaad1ca52dc4f43b
     assets:
       - ffmpeg-x86_64
-    dependency_override: []
+    # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
+    # https://github.com/pypa/pip/issues/11664
+    dependency_override:
+      # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
+      - cffi>=1.14
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
@@ -121,7 +129,11 @@ builds:
       sha256: c4a95d56d021e1b6a71ab785abe9f48f11d11671a38fca58baa4978638e84214
     assets:
       - ffmpeg-x86
-    dependency_override: []
+    # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
+    # https://github.com/pypa/pip/issues/11664
+    dependency_override:
+      # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
+      - cffi>=1.14
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
@@ -159,7 +171,11 @@ builds:
       sha256: 7f5e774e4f966892a922793504be746a30f636ea07fe7e0a3c64e0c802d614b1
     assets:
       - ffmpeg-x86_64
-    dependency_override: []
+    # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
+    # https://github.com/pypa/pip/issues/11664
+    dependency_override:
+      # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
+      - cffi>=1.14
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
