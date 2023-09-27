@@ -1,9 +1,9 @@
 import argparse
 import datetime
 import io
-import json
 import os
 import time
+import yaml
 from pathlib import Path
 from textwrap import dedent
 
@@ -14,7 +14,7 @@ from nsist.commands import prepare_bin_directory
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=Path, default=Path(__file__).parent / "portable.json")
+    parser.add_argument("--config", type=Path, default=Path(__file__).parent / "portable.yml")
     parser.add_argument("--target", type=Path, required=True)
     parser.add_argument("--bitness", type=int, choices=[32, 64], required=True)
     parser.add_argument("--prepend-ffmpeg", action="store_true", default=False)
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     args = get_args()
 
     with open(args.config, "r") as fp:
-        data = json.load(fp)
+        data = yaml.load(fp, yaml.Loader)
 
     extra_preamble = io.StringIO()
     if args.prepend_ffmpeg:

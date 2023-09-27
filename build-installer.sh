@@ -12,6 +12,7 @@ declare -A DEPS=(
   [git]=git
   [inkscape]=inkscape
   [jq]=jq
+  [yq]=yq
   [makensis]=NSIS
   [pip]=pip
   [pynsist]=pynsist
@@ -30,7 +31,7 @@ PIP_ARGS=(
 GIT_FETCHDEPTH=300
 
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null || dirname "$(readlink -f "${0}")")
-CONFIG="${ROOT}/config.json"
+CONFIG="${ROOT}/config.yml"
 DIR_CACHE="${ROOT}/cache"
 DIR_DIST="${ROOT}/dist"
 DIR_FILES="${ROOT}/files"
@@ -59,17 +60,17 @@ done
 CONFIGJSON=$(cat "${CONFIG}")
 
 [[ -n "${BUILDNAME}" ]] \
-  && jq -e ".builds[\"${BUILDNAME}\"]" 2>&1 >/dev/null <<< "${CONFIGJSON}" \
+  && yq -e ".builds[\"${BUILDNAME}\"]" 2>&1 >/dev/null <<< "${CONFIGJSON}" \
   || err "Invalid build name"
 
 read -r appname apprel \
-  < <(jq -r '.app | "\(.name) \(.rel)"' <<< "${CONFIGJSON}")
+  < <(yq -r '.app | "\(.name) \(.rel)"' <<< "${CONFIGJSON}")
 read -r gitrepo gitref \
-  < <(jq -r '.git | "\(.repo) \(.ref)"' <<< "${CONFIGJSON}")
+  < <(yq -r '.git | "\(.repo) \(.ref)"' <<< "${CONFIGJSON}")
 read -r implementation pythonversion platform \
-  < <(jq -r ".builds[\"${BUILDNAME}\"] | \"\(.implementation) \(.pythonversion) \(.platform)\"" <<< "${CONFIGJSON}")
+  < <(yq -r ".builds[\"${BUILDNAME}\"] | \"\(.implementation) \(.pythonversion) \(.platform)\"" <<< "${CONFIGJSON}")
 read -r pythonversionfull pythonfilename pythonurl pythonsha256 \
-  < <(jq -r ".builds[\"${BUILDNAME}\"].pythonembed | \"\(.version) \(.filename) \(.url) \(.sha256)\"" <<< "${CONFIGJSON}")
+  < <(yq -r ".builds[\"${BUILDNAME}\"].pythonembed | \"\(.version) \(.filename) \(.url) \(.sha256)\"" <<< "${CONFIGJSON}")
 
 gitrepo="${GITREPO:-${gitrepo}}"
 gitref="${GITREF:-${gitref}}"
@@ -127,14 +128,14 @@ get_assets() {
   while read -r assetname; do
     local filename url sha256
     read -r filename url sha256 \
-      < <(jq -r ".assets[\"${assetname}\"] | \"\(.filename) \(.url) \(.sha256)\"" <<< "${CONFIGJSON}")
+      < <(yq -r ".assets[\"${assetname}\"] | \"\(.filename) \(.url) \(.sha256)\"" <<< "${CONFIGJSON}")
     if ! [[ -f "${DIR_CACHE}/${filename}" ]]; then
       log "Downloading asset: ${assetname}"
       curl -SLo "${DIR_CACHE}/${filename}" "${url}"
     fi
     log "Checking asset: ${assetname}"
     sha256sum -c - <<< "${sha256} ${DIR_CACHE}/${filename}"
-  done < <(jq -r ".builds[\"${BUILDNAME}\"].assets[]" <<< "${CONFIGJSON}")
+  done < <(yq -r ".builds[\"${BUILDNAME}\"].assets[]" <<< "${CONFIGJSON}")
 }
 
 build_app() {
@@ -185,7 +186,7 @@ build_wheels() {
     --implementation="${implementation}" \
     --dest="${DIR_WHEELS}" \
     --requirement=/dev/stdin \
-    < <(jq -r ".builds[\"${BUILDNAME}\"].dependencies.wheels | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
+    < <(yq -r ".builds[\"${BUILDNAME}\"].dependencies.wheels | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
 
   log "Downloading and building sdists"
   pip wheel \
@@ -194,7 +195,7 @@ build_wheels() {
     --no-binary=:all: \
     --wheel-dir="${DIR_WHEELS}" \
     --requirement=/dev/stdin \
-    < <(jq -r ".builds[\"${BUILDNAME}\"].dependencies.sdists | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
+    < <(yq -r ".builds[\"${BUILDNAME}\"].dependencies.sdists | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
 
   log "Removing ignored wheels"
   ( shopt -s nullglob; set -x; cd "${DIR_WHEELS}" && rm -f -- ${WHEELS_IGNORE[@]/%/-*.whl}; )
@@ -214,7 +215,7 @@ prepare_assets() {
     log "Preparing asset: ${assetname}"
     local type filename sourcedir targetdir
     read -r type filename sourcedir targetdir \
-      < <(jq -r ".assets[\"${assetname}\"] | \"\(.type) \(.filename) \(.sourcedir) \(.targetdir)\"" <<< "${CONFIGJSON}")
+      < <(yq -r ".assets[\"${assetname}\"] | \"\(.type) \(.filename) \(.sourcedir) \(.targetdir)\"" <<< "${CONFIGJSON}")
     case "${type}" in
       zip)
         mkdir -p "${DIR_ASSETS}/${assetname}"
@@ -227,8 +228,8 @@ prepare_assets() {
     esac
     while read -r from to; do
       install -vDT "${sourcedir}/${from}" "${DIR_BUILD}/${targetdir}/${to}"
-    done < <(jq -r ".assets[\"${assetname}\"].files[] | \"\(.from) \(.to)\"" <<< "${CONFIGJSON}")
-  done < <(jq -r ".builds[\"${BUILDNAME}\"].assets[]" <<< "${CONFIGJSON}")
+    done < <(yq -r ".assets[\"${assetname}\"].files[] | \"\(.from) \(.to)\"" <<< "${CONFIGJSON}")
+  done < <(yq -r ".builds[\"${BUILDNAME}\"].assets[]" <<< "${CONFIGJSON}")
 }
 
 prepare_files() {

@@ -25,6 +25,7 @@ OPT_DEPSPEC=("${OPT_DEPSPEC[@]:3}")
 declare -A DEPS=(
   [gawk]=gawk
   [jq]=jq
+  [yq]=yq
   [mktemp]=mktemp
   [pip]=pip
   [sha256sum]=sha256sum
@@ -41,7 +42,7 @@ PIP_ARGS=(
 )
 
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null || dirname "$(readlink -f "${0}")")
-CONFIG="${ROOT}/config.json"
+CONFIG="${ROOT}/config.yml"
 
 
 # ----
@@ -63,13 +64,13 @@ done
 
 CONFIGJSON=$(cat "${CONFIG}")
 
-jq -e ".builds[\"${BUILDNAME}\"]" >/dev/null <<< "${CONFIGJSON}" \
+yq -e ".builds[\"${BUILDNAME}\"]" >/dev/null <<< "${CONFIGJSON}" \
   || err "Unsupported build name"
 
 read -r gitrepo gitref \
-  < <(jq -r '.git | "\(.repo) \(.ref)"' <<< "${CONFIGJSON}")
+  < <(yq -r '.git | "\(.repo) \(.ref)"' <<< "${CONFIGJSON}")
 read -r implementation pythonversion platform \
-  < <(jq -r ".builds[\"${BUILDNAME}\"] | \"\(.implementation) \(.pythonversion) \(.platform)\"" <<< "${CONFIGJSON}")
+  < <(yq -r ".builds[\"${BUILDNAME}\"] | \"\(.implementation) \(.pythonversion) \(.platform)\"" <<< "${CONFIGJSON}")
 
 gitrepo="${GITREPO:-${gitrepo}}"
 gitref="${GITREF:-${gitref}}"
@@ -166,7 +167,7 @@ get_deps() {
         }
       }
     ' \
-    | jq -Cns '
+    | jq -ns '
       inputs as $data
       | {
         sdists: (
@@ -180,7 +181,8 @@ get_deps() {
           | [.[] | {key: .name, value: .requirement}] | from_entries
         )
       }
-    '
+    ' \
+    | yq -y -C '{"dependencies": .}'
 }
 
 

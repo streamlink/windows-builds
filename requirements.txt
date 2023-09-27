@@ -1,4 +1,6 @@
 distlib ==0.3.6
 freezegun
 pynsist ==2.8
+pyyaml >=6.0.0
 wheel
+yq >=3.0.0
