@@ -50,6 +50,8 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
       - cffi>=1.14
+      # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L94
+      - exceptiongroup>=1.0.0rc9
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
@@ -92,6 +94,8 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
       - cffi>=1.14
+      # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L94
+      - exceptiongroup>=1.0.0rc9
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
