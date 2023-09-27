@@ -75,6 +75,8 @@ read -r implementation pythonversion platform \
 gitrepo="${GITREPO:-${gitrepo}}"
 gitref="${GITREF:-${gitref}}"
 
+dependency_override=($(yq -r ".builds[\"${BUILDNAME}\"].dependency_override[]" <<< "${CONFIGJSON}"))
+
 
 # ----
 
@@ -124,6 +126,7 @@ get_deps() {
     "${PIP_ARGS[@]}" \
     --no-binary=:all: \
     "git+file://${DIR_REPO}@${gitref}" \
+    "${dependency_override[@]}" \
     "${OPT_DEPSPEC[@]}"
   remove_ignored_packages
 
@@ -135,6 +138,7 @@ get_deps() {
     --python-version="${pythonversion}" \
     --platform="${platform}" \
     "git+file://${DIR_REPO}@${gitref}" \
+    "${dependency_override[@]}" \
     "${OPT_DEPSPEC[@]}"
   remove_ignored_packages
 
