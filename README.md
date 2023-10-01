@@ -81,9 +81,9 @@ Both the embedded Python builds and FFmpeg builds are unofficial and unsigned, a
 
 ### How to
 
-The build configurations can be found in the `config.json` file. Here, the default Streamlink source and version are defined that will be used when building, in addition to assets, and most importantly, the various build flavors.
+The build configurations can be found in the `config.yml` file. Here, the default Streamlink source and version are defined that will be used when building, in addition to assets, and most importantly, the various build flavors.
 
-The `installer.cfg` file defines the pynsist configuration, and the `installer.nsi` file is used as an extension for pynsist's default NSIS template. `portable.json` on the other hand defines the configuration for the portable builds.
+The `installer.cfg` file defines the pynsist configuration, and the `installer.nsi` file is used as an extension for pynsist's default NSIS template. `portable.yml` on the other hand defines the configuration for the portable builds.
 
 Each build flavor includes the source of an embedded Python build and the fixed set of Streamlink's dependency versions plus checksums for that specific build (Streamlink doesn't provide its own dependency lockfile).
 
