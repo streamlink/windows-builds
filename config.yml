@@ -1,9 +1,9 @@
 app:
   name: streamlink
-  rel: '1'
+  rel: 1
 git:
   repo: https://github.com/streamlink/streamlink.git
-  ref: 6.2.0
+  ref: 6.2.1
 assets:
   ffmpeg-x86:
     filename: ffmpeg-n6.0-35-g067ed535f4-win32-gpl-6.0.zip
