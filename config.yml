@@ -6,11 +6,11 @@ git:
   ref: 6.3.1
 assets:
   ffmpeg-x86:
-    filename: ffmpeg-n6.0-35-g067ed535f4-win32-gpl-6.0.zip
-    url: https://github.com/streamlink/FFmpeg-Builds/releases/download/20230930-1/ffmpeg-n6.0-35-g067ed535f4-win32-gpl-6.0.zip
-    sha256: b2a5acb8e14f680b83f3022ac42d5d01343d4f924067f85a599caa41b93a1078
+    filename: ffmpeg-n6.1-win32-gpl-6.1.zip
+    url: https://github.com/streamlink/FFmpeg-Builds/releases/download/20231112-1/ffmpeg-n6.1-win32-gpl-6.1.zip
+    sha256: 0f935670e29d49d8431e60780f8578432be37cae1f63f10d15baec0d1bdc69e3
     type: zip
-    sourcedir: ffmpeg-n6.0-35-g067ed535f4-win32-gpl-6.0
+    sourcedir: ffmpeg-n6.1-win32-gpl-6.1
     targetdir: ffmpeg
     files:
       - from: bin/ffmpeg.exe
@@ -20,11 +20,11 @@ assets:
       - from: BUILDINFO.txt
         to: BUILDINFO.txt
   ffmpeg-x86_64:
-    filename: ffmpeg-n6.0-35-g067ed535f4-win64-gpl-6.0.zip
-    url: https://github.com/streamlink/FFmpeg-Builds/releases/download/20230930-1/ffmpeg-n6.0-35-g067ed535f4-win64-gpl-6.0.zip
-    sha256: 8f87da7a243857a5cfbc14a797c3afcee0a5b187c751fefa3075397992d8ed30
+    filename: ffmpeg-n6.1-win64-gpl-6.1.zip
+    url: https://github.com/streamlink/FFmpeg-Builds/releases/download/20231112-1/ffmpeg-n6.1-win64-gpl-6.1.zip
+    sha256: a17214e129c0a1a526f74baa3b9814851e380a7b961ccb6118562b8cf7320481
     type: zip
-    sourcedir: ffmpeg-n6.0-35-g067ed535f4-win64-gpl-6.0
+    sourcedir: ffmpeg-n6.1-win64-gpl-6.1
     targetdir: ffmpeg
     files:
       - from: bin/ffmpeg.exe
