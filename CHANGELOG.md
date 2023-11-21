@@ -1,6 +1,11 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 6.4.0-1 (2023-11-21)
+
+- Updated Streamlink to 6.4.0, updated its dependencies
+- Updated FFmpeg to n6.1, with latest library versions
+
 ## 6.3.1-1 (2023-10-26)
 
 - Updated Streamlink to 6.3.1
