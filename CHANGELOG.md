@@ -1,6 +1,10 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 6.4.1-1 (2023-11-22)
+
+- Updated Streamlink to 6.4.1
+
 ## 6.4.0-1 (2023-11-21)
 
 - Updated Streamlink to 6.4.0, updated its dependencies
