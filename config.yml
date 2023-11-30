@@ -52,11 +52,14 @@ builds:
       - cffi>=1.14
       # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L94
       - exceptiongroup>=1.0.0rc9
+      # optional dependency of urllib3
+      - brotli==1.1.0
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
         setuptools: 69.0.2 --hash=sha256:735896e78a4742605974de002ac60562d286fa8051a7e2299445e8e8fbb01aa6
       wheels:
+        Brotli: 1.1.0 --hash=sha256:db85ecf4e609a48f4b29055f1e144231b90edc90af7481aa731ba2d059226b1b
         PySocks: 1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5
         attrs: 23.1.0 --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
         certifi: 2023.11.17 --hash=sha256:e036ab49d5b79556f99cfc2d9320b34cfbe5be05c5871b51de9329f0603b0474
@@ -98,11 +101,14 @@ builds:
       - cffi>=1.14
       # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L94
       - exceptiongroup>=1.0.0rc9
+      # optional dependency of urllib3
+      - brotli==1.1.0
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
         setuptools: 69.0.2 --hash=sha256:735896e78a4742605974de002ac60562d286fa8051a7e2299445e8e8fbb01aa6
       wheels:
+        Brotli: 1.1.0 --hash=sha256:3d7954194c36e304e1523f55d7042c59dc53ec20dd4e9ea9d151f1b62b4415c0
         PySocks: 1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5
         attrs: 23.1.0 --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
         certifi: 2023.11.17 --hash=sha256:e036ab49d5b79556f99cfc2d9320b34cfbe5be05c5871b51de9329f0603b0474
@@ -142,11 +148,14 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
       - cffi>=1.14
+      # optional dependency of urllib3
+      - brotli==1.1.0
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
         setuptools: 69.0.2 --hash=sha256:735896e78a4742605974de002ac60562d286fa8051a7e2299445e8e8fbb01aa6
       wheels:
+        Brotli: 1.1.0 --hash=sha256:39da8adedf6942d76dc3e46653e52df937a3c4d6d18fdc94a7c29d263b1f5b50
         PySocks: 1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5
         attrs: 23.1.0 --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
         certifi: 2023.11.17 --hash=sha256:e036ab49d5b79556f99cfc2d9320b34cfbe5be05c5871b51de9329f0603b0474
@@ -185,11 +194,14 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
       - cffi>=1.14
+      # optional dependency of urllib3
+      - brotli==1.1.0
     dependencies:
       sdists:
         pycountry: 22.3.5 --hash=sha256:b2163a246c585894d808f18783e19137cb70a0c18fb36748dc01fc6f109c1646
         setuptools: 69.0.2 --hash=sha256:735896e78a4742605974de002ac60562d286fa8051a7e2299445e8e8fbb01aa6
       wheels:
+        Brotli: 1.1.0 --hash=sha256:aac0411d20e345dc0920bdec5548e438e999ff68d77564d5e9463a7ca9d3e7b1
         PySocks: 1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5
         attrs: 23.1.0 --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
         certifi: 2023.11.17 --hash=sha256:e036ab49d5b79556f99cfc2d9320b34cfbe5be05c5871b51de9329f0603b0474
