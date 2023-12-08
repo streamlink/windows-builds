@@ -137,10 +137,10 @@ builds:
     pythonversion: '3.11'
     platform: win32
     pythonembed:
-      version: 3.11.6
-      filename: python-v3.11.6-0-g8b6ee5ba-windows-x86-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20231015-1/python-v3.11.6-0-g8b6ee5ba-windows-x86-embed.zip
-      sha256: 504231fc9711d279bbcbd56c2868709624c015eaa81ecd9b966adc601c907717
+      version: 3.11.7
+      filename: python-v3.11.7-0-gfa7a6f23-windows-x86-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20231208-1/python-v3.11.7-0-gfa7a6f23-windows-x86-embed.zip
+      sha256: 24b0f3667ca0dd17658dd514190d45fb7bda57615b767fbcbf68cf8d47ad13e0
     assets:
       - ffmpeg-x86
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
@@ -183,10 +183,10 @@ builds:
     pythonversion: '3.11'
     platform: win_amd64
     pythonembed:
-      version: 3.11.6
-      filename: python-v3.11.6-0-g8b6ee5ba-windows-x64-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20231015-1/python-v3.11.6-0-g8b6ee5ba-windows-x64-embed.zip
-      sha256: 4bcf9cd85759c172e9b8b6a89279181d8429d10d3cb5768097ba6a8e5e2309ac
+      version: 3.11.7
+      filename: python-v3.11.7-0-gfa7a6f23-windows-x64-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20231208-1/python-v3.11.7-0-gfa7a6f23-windows-x64-embed.zip
+      sha256: c25378b80163d60a6a77ec8c6c137bcddcdbef1a5557c21448231c6a5bc77122
     assets:
       - ffmpeg-x86_64
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
