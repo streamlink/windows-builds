@@ -14,10 +14,6 @@ declare -A DEPS=(
   [unzip]=unzip
 )
 
-DISTS_IGNORE=(
-  setuptools
-)
-
 PIP_ARGS=(
   --isolated
   --disable-pip-version-check
@@ -189,23 +185,7 @@ install_pkgs() {
     --target="${DIR_PKGS}" \
     --no-compile \
     --requirement=/dev/stdin \
-    < <(yq -r ".builds[\"${BUILDNAME}\"].dependencies.wheels | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
-
-  log "Installing sdists"
-  pip install \
-    "${PIP_ARGS[@]}" \
-    --require-hashes \
-    --no-binary=:all: \
-    --no-deps \
-    --target="${DIR_PKGS}" \
-    --no-compile \
-    --requirement=/dev/stdin \
-    < <(yq \
-      -r \
-      --arg keys "$(echo "${DISTS_IGNORE[*]}")" \
-      ".builds[\"${BUILDNAME}\"].dependencies.sdists | delpaths(\$keys | split(\" \") | map([.])) | to_entries[] | \"\(.key)==\(.value)\"" \
-      <<< "${CONFIGJSON}"
-    )
+    < <(yq -r ".builds[\"${BUILDNAME}\"].dependencies | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
 
   log "Installing app"
   pip install \

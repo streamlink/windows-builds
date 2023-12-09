@@ -19,10 +19,6 @@ declare -A DEPS=(
   [unzip]=unzip
 )
 
-WHEELS_IGNORE=(
-  setuptools
-)
-
 PIP_ARGS=(
   --isolated
   --disable-pip-version-check
@@ -175,7 +171,7 @@ build_app() {
     "${DIR_BUILD}/icon.ico"
 }
 
-build_wheels() {
+download_wheels() {
   log "Downloading wheels"
   pip download \
     "${PIP_ARGS[@]}" \
@@ -186,19 +182,7 @@ build_wheels() {
     --implementation="${implementation}" \
     --dest="${DIR_WHEELS}" \
     --requirement=/dev/stdin \
-    < <(yq -r ".builds[\"${BUILDNAME}\"].dependencies.wheels | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
-
-  log "Downloading and building sdists"
-  pip wheel \
-    "${PIP_ARGS[@]}" \
-    --require-hashes \
-    --no-binary=:all: \
-    --wheel-dir="${DIR_WHEELS}" \
-    --requirement=/dev/stdin \
-    < <(yq -r ".builds[\"${BUILDNAME}\"].dependencies.sdists | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
-
-  log "Removing ignored wheels"
-  ( shopt -s nullglob; set -x; cd "${DIR_WHEELS}" && rm -f -- ${WHEELS_IGNORE[@]/%/-*.whl}; )
+    < <(yq -r ".builds[\"${BUILDNAME}\"].dependencies | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
 }
 
 prepare_python() {
@@ -307,7 +291,7 @@ build() {
   get_python
   get_assets
   build_app
-  build_wheels
+  download_wheels
   prepare_python
   prepare_assets
   prepare_files
