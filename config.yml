@@ -152,7 +152,7 @@ builds:
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
-      # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
+      # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
       - cffi>=1.14
       # optional dependency of urllib3
       - brotli==1.1.0
@@ -195,7 +195,7 @@ builds:
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
-      # https://github.com/python-trio/trio/blob/v0.22.2/setup.py#L93
+      # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
       - cffi>=1.14
       # optional dependency of urllib3
       - brotli==1.1.0
