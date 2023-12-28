@@ -56,8 +56,8 @@ builds:
       - importlib-resources>=5.12.0,<6.0.0
       # https://github.com/python/importlib_resources/blob/v5.13.0/setup.cfg#L22
       - zipp>=3.1.0
-      # optional dependency of urllib3
-      - brotli==1.1.0
+      # https://github.com/urllib3/urllib3/blob/2.0.6/pyproject.toml#L43
+      - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 23.1.0 --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
       Brotli: 1.1.0 --hash=sha256:db85ecf4e609a48f4b29055f1e144231b90edc90af7481aa731ba2d059226b1b
@@ -108,8 +108,8 @@ builds:
       - importlib-resources>=5.12.0,<6.0.0
       # https://github.com/python/importlib_resources/blob/v5.13.0/setup.cfg#L22
       - zipp>=3.1.0
-      # optional dependency of urllib3
-      - brotli==1.1.0
+      # https://github.com/urllib3/urllib3/blob/2.0.6/pyproject.toml#L43
+      - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 23.1.0 --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
       Brotli: 1.1.0 --hash=sha256:3d7954194c36e304e1523f55d7042c59dc53ec20dd4e9ea9d151f1b62b4415c0
@@ -154,8 +154,8 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
       - cffi>=1.14
-      # optional dependency of urllib3
-      - brotli==1.1.0
+      # https://github.com/urllib3/urllib3/blob/2.0.6/pyproject.toml#L43
+      - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 23.1.0 --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
       Brotli: 1.1.0 --hash=sha256:5f4d5ea15c9382135076d2fb28dde923352fe02951e66935a9efaac8f10e81b0
@@ -197,8 +197,8 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
       - cffi>=1.14
-      # optional dependency of urllib3
-      - brotli==1.1.0
+      # https://github.com/urllib3/urllib3/blob/2.0.6/pyproject.toml#L43
+      - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 23.1.0 --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
       Brotli: 1.1.0 --hash=sha256:906bc3a79de8c4ae5b86d3d75a8b77e44404b0f4261714306e3ad248d8ab0951
