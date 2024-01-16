@@ -1,6 +1,11 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 6.5.1-1 (2024-01-16)
+
+- Updated Streamlink to 6.5.1, updated its dependencies
+- Switched from Python 3.11 to Python 3.12
+
 ## 6.5.0-2 (2023-12-17)
 
 - Fixed missing transitive dependencies of Python 3.8 builds
