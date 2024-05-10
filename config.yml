@@ -48,6 +48,8 @@ builds:
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
+      # https://github.com/streamlink/streamlink/blob/63c6d030e29a/pyproject.toml#L59
+      - exceptiongroup
       # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
       - cffi>=1.14
       # https://github.com/pycountry/pycountry/blob/23.12.11/pyproject.toml#L41
@@ -98,6 +100,8 @@ builds:
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
+      # https://github.com/streamlink/streamlink/blob/63c6d030e29a/pyproject.toml#L59
+      - exceptiongroup
       # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
       - cffi>=1.14
       # https://github.com/pycountry/pycountry/blob/23.12.11/pyproject.toml#L41
@@ -158,7 +162,6 @@ builds:
       certifi: 2024.2.2 --hash=sha256:dc383c07b76109f368f6106eee2b593b04a011ea4d55f652c6ca24a754d1cdd1
       cffi: 1.16.0 --hash=sha256:b2ca4e77f9f47c55c194982e10f058db063937845bb2b7a86c84a6cfe0aefa8b
       charset-normalizer: 3.3.2 --hash=sha256:d965bba47ddeec8cd560687584e88cf699fd28f192ceb452d1d7ee807c5597b7
-      exceptiongroup: 1.2.1 --hash=sha256:5258b9ed329c5bbdd31a309f53cbfb0b155341807f6ff7606a1e801a891b29ad
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
       idna: 3.7 --hash=sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
@@ -202,7 +205,6 @@ builds:
       certifi: 2024.2.2 --hash=sha256:dc383c07b76109f368f6106eee2b593b04a011ea4d55f652c6ca24a754d1cdd1
       cffi: 1.16.0 --hash=sha256:68678abf380b42ce21a5f2abde8efee05c114c2fdb2e9eef2efdb0257fba1235
       charset-normalizer: 3.3.2 --hash=sha256:96b02a3dc4381e5494fad39be677abcb5e6634bf7b4fa83a6dd3112607547001
-      exceptiongroup: 1.2.1 --hash=sha256:5258b9ed329c5bbdd31a309f53cbfb0b155341807f6ff7606a1e801a891b29ad
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
       idna: 3.7 --hash=sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
