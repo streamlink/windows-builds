@@ -50,13 +50,13 @@ builds:
     dependency_override:
       # https://github.com/streamlink/streamlink/blob/63c6d030e29a/pyproject.toml#L59
       - exceptiongroup
-      # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
+      # https://github.com/python-trio/trio/blob/v0.25.1/pyproject.toml#L51
       - cffi>=1.14
-      # https://github.com/pycountry/pycountry/blob/23.12.11/pyproject.toml#L41
+      # https://github.com/pycountry/pycountry/blob/24.6.1/pyproject.toml#L49
       - importlib-resources>=5.12.0,<6.0.0
       # https://github.com/python/importlib_resources/blob/v5.13.0/setup.cfg#L22
       - zipp>=3.1.0
-      # https://github.com/urllib3/urllib3/blob/2.0.6/pyproject.toml#L43
+      # https://github.com/urllib3/urllib3/blob/2.2.1/pyproject.toml#L43
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 23.2.0 --hash=sha256:99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1
@@ -69,23 +69,23 @@ builds:
       idna: 3.7 --hash=sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
       importlib-resources: 5.13.0 --hash=sha256:9f7bd0c97b79972a6cce36a366356d16d5e13b09679c11a58f1014bfdf8e64b2
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
-      lxml: 5.2.1 --hash=sha256:66bc5eb8a323ed9894f8fa0ee6cb3e3fb2403d99aee635078fd19a8bc7a5a5da
+      lxml: 5.2.2 --hash=sha256:5b8c041b6265e08eac8a724b74b655404070b636a8dd6d7a13c3adc07882ef30
       outcome: 1.3.0.post0 --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
-      pycountry: 23.12.11 --hash=sha256:2ff91cff4f40ff61086e773d61e72005fe95de4a57bfc765509db05695dc50ab
+      pycountry: 24.6.1 --hash=sha256:f1a4fb391cd7214f8eefd39556d740adcc233c778a27f8942c8dca351d6ce06f
       pycparser: 2.22 --hash=sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
       pycryptodome: 3.20.0 --hash=sha256:8d6b98d0d83d21fb757a182d52940d028564efe8147baa9ce0f38d057104ae72
       PySocks: 1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5
-      requests: 2.31.0 --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f
+      requests: 2.32.3 --hash=sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6
       six: 1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
       sniffio: 1.3.1 --hash=sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2
       sortedcontainers: 2.4.0 --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
-      trio: 0.25.0 --hash=sha256:e6458efe29cc543e557a91e614e2b51710eba2961669329ce9c862d50c6e8e81
+      trio: 0.25.1 --hash=sha256:e42617ba091e7b2e50c899052e83a3c403101841de925187f61e7b7eaebdf3fb
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
-      typing_extensions: 4.11.0 --hash=sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a
+      typing_extensions: 4.12.1 --hash=sha256:6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a
       urllib3: 2.2.1 --hash=sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
-      zipp: 3.18.1 --hash=sha256:206f5a15f2af3dbaee80769fb7dc6f249695e940acca08dfb2a4769fe61e538b
+      zipp: 3.19.1 --hash=sha256:2828e64edb5386ea6a52e7ba7cdb17bb30a73a858f5eb6eb93d8d36f5ea26091
   py38-x86_64:
     implementation: cp
     pythonversion: '3.8'
@@ -102,13 +102,13 @@ builds:
     dependency_override:
       # https://github.com/streamlink/streamlink/blob/63c6d030e29a/pyproject.toml#L59
       - exceptiongroup
-      # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
+      # https://github.com/python-trio/trio/blob/v0.25.1/pyproject.toml#L51
       - cffi>=1.14
-      # https://github.com/pycountry/pycountry/blob/23.12.11/pyproject.toml#L41
+      # https://github.com/pycountry/pycountry/blob/24.6.1/pyproject.toml#L49
       - importlib-resources>=5.12.0,<6.0.0
       # https://github.com/python/importlib_resources/blob/v5.13.0/setup.cfg#L22
       - zipp>=3.1.0
-      # https://github.com/urllib3/urllib3/blob/2.0.6/pyproject.toml#L43
+      # https://github.com/urllib3/urllib3/blob/2.2.1/pyproject.toml#L43
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 23.2.0 --hash=sha256:99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1
@@ -121,23 +121,23 @@ builds:
       idna: 3.7 --hash=sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
       importlib-resources: 5.13.0 --hash=sha256:9f7bd0c97b79972a6cce36a366356d16d5e13b09679c11a58f1014bfdf8e64b2
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
-      lxml: 5.2.1 --hash=sha256:9676bfc686fa6a3fa10cd4ae6b76cae8be26eb5ec6811d2a325636c460da1806
+      lxml: 5.2.2 --hash=sha256:f61efaf4bed1cc0860e567d2ecb2363974d414f7f1f124b1df368bbf183453a6
       outcome: 1.3.0.post0 --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
-      pycountry: 23.12.11 --hash=sha256:2ff91cff4f40ff61086e773d61e72005fe95de4a57bfc765509db05695dc50ab
+      pycountry: 24.6.1 --hash=sha256:f1a4fb391cd7214f8eefd39556d740adcc233c778a27f8942c8dca351d6ce06f
       pycparser: 2.22 --hash=sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
       pycryptodome: 3.20.0 --hash=sha256:9b3ae153c89a480a0ec402e23db8d8d84a3833b65fa4b15b81b83be9d637aab9
       PySocks: 1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5
-      requests: 2.31.0 --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f
+      requests: 2.32.3 --hash=sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6
       six: 1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
       sniffio: 1.3.1 --hash=sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2
       sortedcontainers: 2.4.0 --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
-      trio: 0.25.0 --hash=sha256:e6458efe29cc543e557a91e614e2b51710eba2961669329ce9c862d50c6e8e81
+      trio: 0.25.1 --hash=sha256:e42617ba091e7b2e50c899052e83a3c403101841de925187f61e7b7eaebdf3fb
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
-      typing_extensions: 4.11.0 --hash=sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a
+      typing_extensions: 4.12.1 --hash=sha256:6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a
       urllib3: 2.2.1 --hash=sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
-      zipp: 3.18.1 --hash=sha256:206f5a15f2af3dbaee80769fb7dc6f249695e940acca08dfb2a4769fe61e538b
+      zipp: 3.19.1 --hash=sha256:2828e64edb5386ea6a52e7ba7cdb17bb30a73a858f5eb6eb93d8d36f5ea26091
   py312-x86:
     implementation: cp
     pythonversion: '3.12'
@@ -152,9 +152,9 @@ builds:
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
-      # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
+      # https://github.com/python-trio/trio/blob/v0.25.1/pyproject.toml#L51
       - cffi>=1.14
-      # https://github.com/urllib3/urllib3/blob/2.0.6/pyproject.toml#L43
+      # https://github.com/urllib3/urllib3/blob/2.2.1/pyproject.toml#L43
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 23.2.0 --hash=sha256:99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1
@@ -165,19 +165,19 @@ builds:
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
       idna: 3.7 --hash=sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
-      lxml: 5.2.1 --hash=sha256:8de8f9d6caa7f25b204fc861718815d41cbcf27ee8f028c89c882a0cf4ae4134
+      lxml: 5.2.2 --hash=sha256:16a8326e51fcdffc886294c1e70b11ddccec836516a343f9ed0f82aac043c24a
       outcome: 1.3.0.post0 --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
-      pycountry: 23.12.11 --hash=sha256:2ff91cff4f40ff61086e773d61e72005fe95de4a57bfc765509db05695dc50ab
+      pycountry: 24.6.1 --hash=sha256:f1a4fb391cd7214f8eefd39556d740adcc233c778a27f8942c8dca351d6ce06f
       pycparser: 2.22 --hash=sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
       pycryptodome: 3.20.0 --hash=sha256:8d6b98d0d83d21fb757a182d52940d028564efe8147baa9ce0f38d057104ae72
       PySocks: 1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5
-      requests: 2.31.0 --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f
+      requests: 2.32.3 --hash=sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6
       six: 1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
       sniffio: 1.3.1 --hash=sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2
       sortedcontainers: 2.4.0 --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
-      trio: 0.25.0 --hash=sha256:e6458efe29cc543e557a91e614e2b51710eba2961669329ce9c862d50c6e8e81
+      trio: 0.25.1 --hash=sha256:e42617ba091e7b2e50c899052e83a3c403101841de925187f61e7b7eaebdf3fb
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
-      typing_extensions: 4.11.0 --hash=sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a
+      typing_extensions: 4.12.1 --hash=sha256:6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a
       urllib3: 2.2.1 --hash=sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
@@ -195,9 +195,9 @@ builds:
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
-      # https://github.com/python-trio/trio/blob/v0.23.2/pyproject.toml#L49
+      # https://github.com/python-trio/trio/blob/v0.25.1/pyproject.toml#L51
       - cffi>=1.14
-      # https://github.com/urllib3/urllib3/blob/2.0.6/pyproject.toml#L43
+      # https://github.com/urllib3/urllib3/blob/2.2.1/pyproject.toml#L43
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 23.2.0 --hash=sha256:99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1
@@ -208,19 +208,19 @@ builds:
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
       idna: 3.7 --hash=sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
-      lxml: 5.2.1 --hash=sha256:f2a9efc53d5b714b8df2b4b3e992accf8ce5bbdfe544d74d5c6766c9e1146a3a
+      lxml: 5.2.2 --hash=sha256:bbc4b80af581e18568ff07f6395c02114d05f4865c2812a1f02f2eaecf0bfd48
       outcome: 1.3.0.post0 --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
-      pycountry: 23.12.11 --hash=sha256:2ff91cff4f40ff61086e773d61e72005fe95de4a57bfc765509db05695dc50ab
+      pycountry: 24.6.1 --hash=sha256:f1a4fb391cd7214f8eefd39556d740adcc233c778a27f8942c8dca351d6ce06f
       pycparser: 2.22 --hash=sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
       pycryptodome: 3.20.0 --hash=sha256:9b3ae153c89a480a0ec402e23db8d8d84a3833b65fa4b15b81b83be9d637aab9
       PySocks: 1.7.1 --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5
-      requests: 2.31.0 --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f
+      requests: 2.32.3 --hash=sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6
       six: 1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
       sniffio: 1.3.1 --hash=sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2
       sortedcontainers: 2.4.0 --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
-      trio: 0.25.0 --hash=sha256:e6458efe29cc543e557a91e614e2b51710eba2961669329ce9c862d50c6e8e81
+      trio: 0.25.1 --hash=sha256:e42617ba091e7b2e50c899052e83a3c403101841de925187f61e7b7eaebdf3fb
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
-      typing_extensions: 4.11.0 --hash=sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a
+      typing_extensions: 4.12.1 --hash=sha256:6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a
       urllib3: 2.2.1 --hash=sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
