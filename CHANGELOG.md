@@ -1,6 +1,12 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 6.9.0-1 (2024-08-12)
+
+- Updated Streamlink to 6.9.0, updated its dependencies
+- Updated Python from 3.12.4 to 3.12.5
+- Updated Python from 3.8.19-9-g5505b91a to 3.8.19-12-ge319f774
+
 ## 6.8.3-1 (2024-07-11)
 
 - Updated Streamlink to 6.8.3, updated its dependencies
