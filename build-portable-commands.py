@@ -39,7 +39,7 @@ if __name__ == "__main__":
         command.update(extra_preamble=extra_preamble)
 
     timestamp = int(os.getenv("SOURCE_DATE_EPOCH", time.time()))
-    with freeze_time(datetime.datetime.utcfromtimestamp(timestamp)):
+    with freeze_time(datetime.datetime.fromtimestamp(timestamp, tz=datetime.timezone.utc)):
         prepare_bin_directory(
             args.target,
             commands,
