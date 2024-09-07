@@ -39,10 +39,10 @@ builds:
     pythonversion: '3.8'
     platform: win32
     pythonembed:
-      version: 3.8.19
-      filename: python-v3.8.19-12-ge319f774-windows-x86-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20240807-1/python-v3.8.19-12-ge319f774-windows-x86-embed.zip
-      sha256: c926efe54d654e0b2ec48e2c2bfde43f6bc8630987f7c6d62054719debe2f5e0
+      version: 3.8.20
+      filename: python-v3.8.20-0-g39b2f827-windows-x86-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20240907-1/python-v3.8.20-0-g39b2f827-windows-x86-embed.zip
+      sha256: 164314319d00cb6a90f599d8d83da95d53c121e36e7a7f120eaafed10db81eb5
     assets:
       - ffmpeg-x86
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
@@ -91,10 +91,10 @@ builds:
     pythonversion: '3.8'
     platform: win_amd64
     pythonembed:
-      version: 3.8.19
-      filename: python-v3.8.19-12-ge319f774-windows-x64-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20240807-1/python-v3.8.19-12-ge319f774-windows-x64-embed.zip
-      sha256: 5f96521571f4c2a5fdc262d2850e6b39af7d1cd7b13044958736638f3cb01bb3
+      version: 3.8.20
+      filename: python-v3.8.20-0-g39b2f827-windows-x64-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20240907-1/python-v3.8.20-0-g39b2f827-windows-x64-embed.zip
+      sha256: ae76aa85ba3b768e3a766eda1df3cefc8eac40a2f8181561f980a082e47b14a0
     assets:
       - ffmpeg-x86_64
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
