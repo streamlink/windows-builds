@@ -56,7 +56,7 @@ builds:
       - importlib-resources>=5.12.0,<6.0.0
       # https://github.com/python/importlib_resources/blob/v5.13.0/setup.cfg#L22
       - zipp>=3.1.0
-      # https://github.com/urllib3/urllib3/blob/2.2.2/pyproject.toml#L43
+      # https://github.com/urllib3/urllib3/blob/2.2.3/pyproject.toml#L44
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 24.2.0 --hash=sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2
@@ -66,7 +66,7 @@ builds:
       charset-normalizer: 3.3.2 --hash=sha256:6ef1d82a3af9d3eecdba2321dc1b3c238245d890843e040e41e470ffa64c3e25
       exceptiongroup: 1.2.2 --hash=sha256:3111b9d131c238bec2f8f516e123e14ba243563fb135d3fe885990585aa7795b
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
-      idna: 3.8 --hash=sha256:050b4e5baadcd44d760cedbd2b8e639f2ff89bbc7a5730fcc662954303377aac
+      idna: 3.10 --hash=sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
       importlib-resources: 5.13.0 --hash=sha256:9f7bd0c97b79972a6cce36a366356d16d5e13b09679c11a58f1014bfdf8e64b2
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
       lxml: 5.3.0 --hash=sha256:218c1b2e17a710e363855594230f44060e2025b05c80d1f0661258142b2add2e
@@ -82,10 +82,10 @@ builds:
       trio: 0.26.2 --hash=sha256:c5237e8133eb0a1d72f09a971a55c28ebe69e351c783fc64bc37db8db8bbe1d0
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
       typing_extensions: 4.12.2 --hash=sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d
-      urllib3: 2.2.2 --hash=sha256:a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472
+      urllib3: 2.2.3 --hash=sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
-      zipp: 3.20.1 --hash=sha256:9960cd8967c8f85a56f920d5d507274e74f9ff813a0ab8889a5b5be2daf44064
+      zipp: 3.20.2 --hash=sha256:a817ac80d6cf4b23bf7f2828b7cabf326f15a001bea8b1f9b49631780ba28350
   py38-x86_64:
     implementation: cp
     pythonversion: '3.8'
@@ -108,7 +108,7 @@ builds:
       - importlib-resources>=5.12.0,<6.0.0
       # https://github.com/python/importlib_resources/blob/v5.13.0/setup.cfg#L22
       - zipp>=3.1.0
-      # https://github.com/urllib3/urllib3/blob/2.2.2/pyproject.toml#L43
+      # https://github.com/urllib3/urllib3/blob/2.2.3/pyproject.toml#L44
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 24.2.0 --hash=sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2
@@ -118,7 +118,7 @@ builds:
       charset-normalizer: 3.3.2 --hash=sha256:eb8821e09e916165e160797a6c17edda0679379a4be5c716c260e836e122f54b
       exceptiongroup: 1.2.2 --hash=sha256:3111b9d131c238bec2f8f516e123e14ba243563fb135d3fe885990585aa7795b
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
-      idna: 3.8 --hash=sha256:050b4e5baadcd44d760cedbd2b8e639f2ff89bbc7a5730fcc662954303377aac
+      idna: 3.10 --hash=sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
       importlib-resources: 5.13.0 --hash=sha256:9f7bd0c97b79972a6cce36a366356d16d5e13b09679c11a58f1014bfdf8e64b2
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
       lxml: 5.3.0 --hash=sha256:315f9542011b2c4e1d280e4a20ddcca1761993dda3afc7a73b01235f8641e903
@@ -134,10 +134,10 @@ builds:
       trio: 0.26.2 --hash=sha256:c5237e8133eb0a1d72f09a971a55c28ebe69e351c783fc64bc37db8db8bbe1d0
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
       typing_extensions: 4.12.2 --hash=sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d
-      urllib3: 2.2.2 --hash=sha256:a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472
+      urllib3: 2.2.3 --hash=sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
-      zipp: 3.20.1 --hash=sha256:9960cd8967c8f85a56f920d5d507274e74f9ff813a0ab8889a5b5be2daf44064
+      zipp: 3.20.2 --hash=sha256:a817ac80d6cf4b23bf7f2828b7cabf326f15a001bea8b1f9b49631780ba28350
   py312-x86:
     implementation: cp
     pythonversion: '3.12'
@@ -154,7 +154,7 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.26.2/pyproject.toml#L52
       - cffi>=1.14
-      # https://github.com/urllib3/urllib3/blob/2.2.2/pyproject.toml#L43
+      # https://github.com/urllib3/urllib3/blob/2.2.3/pyproject.toml#L44
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 24.2.0 --hash=sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2
@@ -163,7 +163,7 @@ builds:
       cffi: 1.17.1 --hash=sha256:a08d7e755f8ed21095a310a693525137cfe756ce62d066e53f502a83dc550f65
       charset-normalizer: 3.3.2 --hash=sha256:d965bba47ddeec8cd560687584e88cf699fd28f192ceb452d1d7ee807c5597b7
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
-      idna: 3.8 --hash=sha256:050b4e5baadcd44d760cedbd2b8e639f2ff89bbc7a5730fcc662954303377aac
+      idna: 3.10 --hash=sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
       lxml: 5.3.0 --hash=sha256:17e8d968d04a37c50ad9c456a286b525d78c4a1c15dd53aa46c1d8e06bf6fa30
       outcome: 1.3.0.post0 --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
@@ -178,7 +178,7 @@ builds:
       trio: 0.26.2 --hash=sha256:c5237e8133eb0a1d72f09a971a55c28ebe69e351c783fc64bc37db8db8bbe1d0
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
       typing_extensions: 4.12.2 --hash=sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d
-      urllib3: 2.2.2 --hash=sha256:a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472
+      urllib3: 2.2.3 --hash=sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
   py312-x86_64:
@@ -197,7 +197,7 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.26.2/pyproject.toml#L52
       - cffi>=1.14
-      # https://github.com/urllib3/urllib3/blob/2.2.2/pyproject.toml#L43
+      # https://github.com/urllib3/urllib3/blob/2.2.3/pyproject.toml#L44
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 24.2.0 --hash=sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2
@@ -206,7 +206,7 @@ builds:
       cffi: 1.17.1 --hash=sha256:51392eae71afec0d0c8fb1a53b204dbb3bcabcb3c9b807eedf3e1e6ccf2de903
       charset-normalizer: 3.3.2 --hash=sha256:96b02a3dc4381e5494fad39be677abcb5e6634bf7b4fa83a6dd3112607547001
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
-      idna: 3.8 --hash=sha256:050b4e5baadcd44d760cedbd2b8e639f2ff89bbc7a5730fcc662954303377aac
+      idna: 3.10 --hash=sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
       isodate: 0.6.1 --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96
       lxml: 5.3.0 --hash=sha256:c1a69e58a6bb2de65902051d57fde951febad631a20a64572677a1052690482f
       outcome: 1.3.0.post0 --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
@@ -221,6 +221,6 @@ builds:
       trio: 0.26.2 --hash=sha256:c5237e8133eb0a1d72f09a971a55c28ebe69e351c783fc64bc37db8db8bbe1d0
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
       typing_extensions: 4.12.2 --hash=sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d
-      urllib3: 2.2.2 --hash=sha256:a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472
+      urllib3: 2.2.3 --hash=sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
