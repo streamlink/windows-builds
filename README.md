@@ -19,10 +19,6 @@ The windows-builds changelog can be found [here](https://github.com/streamlink/w
 
 - Latest Python, x86\_64 (64 bit) - recommended
 - Latest Python, x86 (32 bit)
-- Python 3.8, x86\_64 (64 bit) - for Windows 7
-- Python 3.8, x86 (32 bit) - for Windows 7
-
-[Python 3.8](https://endoflife.date/python) is the last Python branch which still supports [Windows 7](https://endoflife.date/windows).
 
 
 ## Download
@@ -68,7 +64,7 @@ Both the embedded Python builds and FFmpeg builds are unofficial and unsigned, a
 
 - GNU/Linux environment
 - [git](https://git-scm.com/)
-- [Python 3.8+](https://www.python.org/) and the most recent version of [pip](https://pip.pypa.io/en/stable/)
+- [Python 3.9+](https://www.python.org/) and the most recent version of [pip](https://pip.pypa.io/en/stable/)
   - [virtualenv](https://pypi.org/project/virtualenv/)
   - [pynsist](https://pypi.org/project/pynsist/) `==2.8`
   - [distlib](https://pypi.org/project/distlib/) `==0.3.6`
