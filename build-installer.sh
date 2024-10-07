@@ -271,10 +271,9 @@ prepare_installer() {
     DIR_DISTINFO="${distinfo}" \
     VERSION="${installerversion}" \
     PYTHONVERSION="${pythonversionfull}" \
-    BITNESS="$([[ "${platform}" == "win_amd64" ]] && echo 64 || echo 32)" \
     INSTALLER_NAME="${DIR_DIST}/${appname}-${installerversion}-${BUILDNAME}.exe" \
     NSI_TEMPLATE="installer.nsi" \
-    envsubst '$DIR_BUILD $DIR_DISTINFO $DIR_WHEELS $VERSION $ENTRYPOINT $PYTHONVERSION $BITNESS $INSTALLER_NAME $NSI_TEMPLATE' \
+    envsubst '$DIR_BUILD $DIR_DISTINFO $DIR_WHEELS $VERSION $ENTRYPOINT $PYTHONVERSION $INSTALLER_NAME $NSI_TEMPLATE' \
     < "${ROOT}/installer.cfg" \
     > "${DIR_BUILD}/installer.cfg"
 }

@@ -167,9 +167,7 @@ prepare_files() {
 
 prepare_executables() {
   log "Preparing executables"
-  TZ=UTC python ./build-portable-commands.py \
-    --target="${DIR_BIN}" \
-    --bitness="$([[ "${platform}" == "win_amd64" ]] && echo 64 || echo 32)"
+  TZ=UTC python ./build-portable-commands.py --target="${DIR_BIN}"
 }
 
 install_pkgs() {

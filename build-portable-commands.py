@@ -16,7 +16,6 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=Path, default=Path(__file__).parent / "portable.yml")
     parser.add_argument("--target", type=Path, required=True)
-    parser.add_argument("--bitness", type=int, choices=[32, 64], required=True)
     parser.add_argument("--prepend-ffmpeg", action="store_true", default=False)
 
     return parser.parse_args()
@@ -43,5 +42,5 @@ if __name__ == "__main__":
         prepare_bin_directory(
             args.target,
             commands,
-            bitness=args.bitness,
+            bitness=64,
         )
