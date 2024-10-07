@@ -15,12 +15,6 @@ The windows-builds changelog can be found [here](https://github.com/streamlink/w
 - [FFmpeg, for muxing streams](https://github.com/streamlink/FFmpeg-Builds)
 
 
-## Flavors
-
-- Latest Python, x86\_64 (64 bit) - recommended
-- Latest Python, x86 (32 bit)
-
-
 ## Download
 
 ### Stable releases

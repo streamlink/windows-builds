@@ -13,12 +13,8 @@ jobs:
         include:
           - build: installer
             buildname: py312-x86_64
-          - build: installer
-            buildname: py312-x86
           - build: portable
             buildname: py312-x86_64
-          - build: portable
-            buildname: py312-x86
     steps:
       - uses: actions/checkout@v4
         with:
