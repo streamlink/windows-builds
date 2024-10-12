@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euo pipefail
 
-BUILDNAME="${1}"
-GITREPO="${2}"
-GITREF="${3}"
+BUILDNAME="${1:-}"
+GITREPO="${2:-}"
+GITREF="${3:-}"
 
 declare -A DEPS=(
   [convert]=Imagemagick
@@ -38,26 +38,29 @@ DIR_FILES="${ROOT}/files"
 
 SELF=$(basename "$(readlink -f "${0}")")
 log() {
-  echo "[${SELF}] ${@}"
+  echo "[${SELF}]" "${@}"
 }
 err() {
   log >&2 "${@}"
   exit 1
 }
 
-[[ "${CI}" ]] || [[ "${VIRTUAL_ENV}" ]] || err "Can only be built in a virtual environment"
+[[ "${CI:-}" ]] || [[ "${VIRTUAL_ENV:-}" ]] || err "Can only be built in a virtual environment"
 
 for dep in "${!DEPS[@]}"; do
-  command -v "${dep}" 2>&1 >/dev/null || err "${DEPS["${dep}"]} is required to build the installer. Aborting."
+  command -v "${dep}" >/dev/null 2>&1 || err "${DEPS["${dep}"]} is required to build the installer. Aborting."
 done
 
 [[ -f "${CONFIG}" ]] \
   || err "Missing config file: ${CONFIG}"
 CONFIGJSON=$(cat "${CONFIG}")
 
-[[ -n "${BUILDNAME}" ]] \
-  && yq -e ".builds[\"${BUILDNAME}\"]" 2>&1 >/dev/null <<< "${CONFIGJSON}" \
-  || err "Invalid build name"
+if [[ -n "${BUILDNAME}" ]]; then
+  yq -e ".builds[\"${BUILDNAME}\"]" >/dev/null 2>&1 <<< "${CONFIGJSON}" \
+    || err "Invalid build name"
+else
+  BUILDNAME=$(yq -r '.builds | keys | first' <<< "${CONFIGJSON}")
+fi
 
 read -r appname apprel \
   < <(yq -r '.app | "\(.name) \(.rel)"' <<< "${CONFIGJSON}")
@@ -75,6 +78,7 @@ gitref="${GITREF:-${gitref}}"
 # ----
 
 
+# shellcheck disable=SC2064
 TEMP=$(mktemp -d) && trap "rm -rf '${TEMP}'" EXIT || exit 255
 
 DIR_REPO="${TEMP}/source.git"
@@ -102,7 +106,8 @@ get_sources() {
     "${DIR_REPO}"
 
   log "Commit information"
-  GIT_PAGER=cat git \
+  git \
+    -c core.pager=cat \
     -C "${DIR_REPO}" \
     log \
     -1 \
@@ -149,7 +154,7 @@ build_app() {
     "${DIR_REPO}"
 
   log "Removing unneeded dist files"
-  ( set -x; rm -r "${DIR_PKGS}/bin" "${DIR_PKGS}"/*.dist-info/direct_url.json; )
+  ( set -x; rm -r "${DIR_PKGS:?}/bin" "${DIR_PKGS}"/*.dist-info/direct_url.json; )
   sed -i -E \
     -e '/^.+\.dist-info\/direct_url\.json,sha256=/d' \
     -e '/^\.\.\/\.\.\//d' \
@@ -244,9 +249,8 @@ prepare_installer() {
   # Custom ref -> tagged release (no build metadata in version string)
   # Add abbreviated commit ID to the plain version string to distinguish it from regular releases, set 0 as app release number
   elif [[ "${versionstring}" != *+* ]]; then
-    local _commit="$(cd "${DIR_REPO}" && git -c core.abbrev=7 rev-parse --short HEAD)"
     vi_version="${versionplain}.0"
-    installerversion="${versionplain}-0-g${_commit}"
+    installerversion="${versionplain}-0-g$(git -c core.abbrev=7 -C "${DIR_REPO}" rev-parse --short HEAD)"
 
   # Custom ref -> arbitrary untagged commit (version string includes build metadata)
   # Translate into correct format
@@ -256,6 +260,7 @@ prepare_installer() {
   fi
 
   log "Preparing installer template"
+  # shellcheck disable=SC2016
   env -i \
     DIR_BUILD="${DIR_BUILD}" \
     VERSION="${installerversion}" \
@@ -265,6 +270,7 @@ prepare_installer() {
     > "${DIR_BUILD}/installer.nsi"
 
   log "Preparing pynsist config"
+  # shellcheck disable=SC2016
   env -i \
     DIR_BUILD="${DIR_BUILD}" \
     DIR_WHEELS="${DIR_WHEELS}" \

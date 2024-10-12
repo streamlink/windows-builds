@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euo pipefail
 
-BUILDNAME="${1}"
-GITREPO="${2}"
-GITREF="${3}"
+BUILDNAME="${1:-}"
+GITREPO="${2:-}"
+GITREF="${3:-}"
 
 declare -A DEPS=(
   [curl]=curl
@@ -26,7 +26,6 @@ CONFIG="${ROOT}/config.yml"
 CONFIG_PORTABLE="${ROOT}/portable.yml"
 DIR_CACHE="${ROOT}/cache"
 DIR_DIST="${ROOT}/dist"
-DIR_FILES="${ROOT}/files"
 
 
 # ----
@@ -34,26 +33,29 @@ DIR_FILES="${ROOT}/files"
 
 SELF=$(basename "$(readlink -f "${0}")")
 log() {
-  echo "[${SELF}] ${@}"
+  echo "[${SELF}]" "${@}"
 }
 err() {
   log >&2 "${@}"
   exit 1
 }
 
-[[ "${CI}" ]] || [[ "${VIRTUAL_ENV}" ]] || err "Can only be built in a virtual environment"
+[[ "${CI:-}" ]] || [[ "${VIRTUAL_ENV:-}" ]] || err "Can only be built in a virtual environment"
 
 for dep in "${!DEPS[@]}"; do
-  command -v "${dep}" 2>&1 >/dev/null || err "${DEPS["${dep}"]} is required to build the installer. Aborting."
+  command -v "${dep}" >/dev/null 2>&1 || err "${DEPS["${dep}"]} is required to build the installer. Aborting."
 done
 
 [[ -f "${CONFIG}" ]] \
   || err "Missing config file: ${CONFIG}"
 CONFIGJSON=$(cat "${CONFIG}")
 
-[[ -n "${BUILDNAME}" ]] \
-  && yq -e ".builds[\"${BUILDNAME}\"]" 2>&1 >/dev/null <<< "${CONFIGJSON}" \
-  || err "Invalid build name"
+if [[ -n "${BUILDNAME}" ]]; then
+  yq -e ".builds[\"${BUILDNAME}\"]" >/dev/null 2>&1 <<< "${CONFIGJSON}" \
+    || err "Invalid build name"
+else
+  BUILDNAME=$(yq -r '.builds | keys | first' <<< "${CONFIGJSON}")
+fi
 
 read -r appname apprel \
   < <(yq -r '.app | "\(.name) \(.rel)"' <<< "${CONFIGJSON}")
@@ -61,7 +63,7 @@ read -r gitrepo gitref \
   < <(yq -r '.git | "\(.repo) \(.ref)"' <<< "${CONFIGJSON}")
 read -r implementation pythonversion platform \
   < <(yq -r ".builds[\"${BUILDNAME}\"] | \"\(.implementation) \(.pythonversion) \(.platform)\"" <<< "${CONFIGJSON}")
-read -r pythonversionfull pythonfilename pythonurl pythonsha256 \
+read -r _pythonversionfull pythonfilename pythonurl pythonsha256 \
   < <(yq -r ".builds[\"${BUILDNAME}\"].pythonembed | \"\(.version) \(.filename) \(.url) \(.sha256)\"" <<< "${CONFIGJSON}")
 
 gitrepo="${GITREPO:-${gitrepo}}"
@@ -71,6 +73,7 @@ gitref="${GITREF:-${gitref}}"
 # ----
 
 
+# shellcheck disable=SC2064
 TEMP=$(mktemp -d) && trap "rm -rf '${TEMP}'" EXIT || exit 255
 
 DIR_REPO="${TEMP}/source.git"
@@ -99,7 +102,8 @@ get_sources() {
     "${DIR_REPO}"
 
   log "Commit information"
-  GIT_PAGER=cat git \
+  git \
+    -c core.pager=cat \
     -C "${DIR_REPO}" \
     log \
     -1 \
@@ -167,7 +171,7 @@ prepare_files() {
 
 prepare_executables() {
   log "Preparing executables"
-  TZ=UTC python ./build-portable-commands.py --target="${DIR_BIN}"
+  TZ=UTC python ./build-portable-commands.py --config="${CONFIG_PORTABLE}" --target="${DIR_BIN}"
 }
 
 install_pkgs() {
@@ -199,7 +203,7 @@ install_pkgs() {
     "${DIR_REPO}"
 
   log "Removing unneeded dist files"
-  ( set -x; rm -r "${DIR_PKGS}/bin" "${DIR_PKGS}"/*.dist-info/direct_url.json; )
+  ( set -x; rm -r "${DIR_PKGS:?}/bin" "${DIR_PKGS}"/*.dist-info/direct_url.json; )
   sed -i -E \
     -e '/^.+\.dist-info\/direct_url\.json,sha256=/d' \
     -e '/^\.\.\/\.\.\//d' \
@@ -222,8 +226,7 @@ build_portable() {
   # Custom ref -> tagged release (no build metadata in version string)
   # Add abbreviated commit ID to the plain version string to distinguish it from regular releases, set 0 as app release number
   elif [[ "${versionstring}" != *+* ]]; then
-    local _commit="$(cd "${DIR_REPO}" && git -c core.abbrev=7 rev-parse --short HEAD)"
-    version="${versionplain}-0-g${_commit}"
+    version="${versionplain}-0-g$(git -c core.abbrev=7 -C "${DIR_REPO}" rev-parse --short HEAD)"
 
   # Custom ref -> arbitrary untagged commit (version string includes build metadata)
   # Translate into correct format
@@ -233,7 +236,7 @@ build_portable() {
 
   log "Updating modification times"
   local mtime
-  [[ "${SOURCE_DATE_EPOCH}" ]] && mtime="@${SOURCE_DATE_EPOCH}" || mtime=now
+  [[ "${SOURCE_DATE_EPOCH:-}" ]] && mtime="@${SOURCE_DATE_EPOCH}" || mtime=now
   find "${DIR_BUILD}" -exec touch --no-dereference "--date=${mtime}" '{}' '+'
 
   log "Packaging portable build"
