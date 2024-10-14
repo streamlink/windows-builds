@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euo pipefail
 
-BUILDNAME="${1}"
-GITREPO="${2}"
-GITREF="${3}"
+BUILDNAME="${1:-}"
+GITREPO="${2:-}"
+GITREF="${3:-}"
 OPT_DEPSPEC=("${@}")
 OPT_DEPSPEC=("${OPT_DEPSPEC[@]:3}")
 
@@ -22,22 +22,26 @@ CONFIG="${ROOT}/config.yml"
 
 SELF=$(basename "$(readlink -f "${0}")")
 log() {
-  echo "[${SELF}] $@"
+  echo "[${SELF}]" "${@}"
 }
 err() {
-  log >&2 "$@"
+  log >&2 "${@}"
   exit 1
 }
 
 
 for dep in "${!DEPS[@]}"; do
-  command -v "${dep}" 2>&1 >/dev/null || err "Missing dependency: ${DEPS["${dep}"]}"
+  command -v "${dep}" >/dev/null 2>&1 || err "Missing dependency: ${DEPS["${dep}"]}"
 done
 
 CONFIGJSON=$(cat "${CONFIG}")
 
-yq -e ".builds[\"${BUILDNAME}\"]" >/dev/null <<< "${CONFIGJSON}" \
-  || err "Unsupported build name"
+if [[ -n "${BUILDNAME}" ]]; then
+  yq -e ".builds[\"${BUILDNAME}\"]" >/dev/null 2>&1 <<< "${CONFIGJSON}" \
+    || err "Invalid build name"
+else
+  BUILDNAME=$(yq -r '.builds | keys | first' <<< "${CONFIGJSON}")
+fi
 
 read -r gitrepo gitref \
   < <(yq -r '.git | "\(.repo) \(.ref)"' <<< "${CONFIGJSON}")
@@ -53,6 +57,7 @@ dependency_override=($(yq -r ".builds[\"${BUILDNAME}\"].dependency_override[]" <
 # ----
 
 
+# shellcheck disable=SC2064
 TEMP=$(mktemp -d) && trap "rm -rf '${TEMP}'" EXIT || exit 255
 
 DIR_REPO="${TEMP}/source.git"
@@ -67,7 +72,8 @@ get_sources() {
     "${DIR_REPO}"
 
   log "Commit information"
-  GIT_PAGER=cat git \
+  git \
+    -c core.pager=cat \
     -C "${DIR_REPO}" \
     log \
     -1 \
