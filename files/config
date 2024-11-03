@@ -71,12 +71,11 @@
 #player-no-close
 
 # Show the player's console output
-#verbose-player
+#player-verbose
 
 # FFMPEG is used to mux separate video and audio streams into a single
 # stream, so that they can be played. The full or relative path to ffmpeg
 # should be specified here.
-#ffmpeg-ffmpeg=C:\Program Files (x86)\Streamlink\ffmpeg\ffmpeg.exe
 #ffmpeg-ffmpeg=C:\Program Files\Streamlink\ffmpeg\ffmpeg.exe
 ffmpeg-ffmpeg=ffmpeg.exe
 
