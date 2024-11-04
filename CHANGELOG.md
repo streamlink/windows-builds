@@ -1,6 +1,15 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 7.0.0-1 (2024-11-04)
+
+- Updated Streamlink to 7.0.0, updated its dependencies
+- Dropped EOL Python 3.8 builds (Windows 7/8 are now unsupported)
+- Dropped x86 ("32 bit") builds
+- Updated Python from 3.12.6 to 3.12.7
+- Updated FFmpeg to n7.1-11-g5c59d97e8a, with latest library versions
+- Updated default config file
+
 ## 6.11.0-1 (2024-10-01)
 
 - Updated Streamlink to 6.11.0, updated its dependencies
