@@ -18,5 +18,5 @@ Further information can be found in Streamlink's [install docs](https://streamli
 
 ## ❤️ Support
 
-If you think that Streamlink is useful and if you want to keep the project alive, then please consider supporting its maintainers by sending a small and optionally recurring tip via the [available options](https://streamlink.github.io/donate.html).  
+If you think that Streamlink is useful and if you want to keep the project alive, then please consider supporting its maintainers by sending a small and optionally recurring tip via the [available options](https://streamlink.github.io/support.html).  
 Your support is very much appreciated, thank you!
