@@ -93,21 +93,22 @@ mkdir -p \
 
 get_sources() {
   log "Getting sources"
-  git \
-    -c advice.detachedHead=false \
-    clone \
-    --depth="${GIT_FETCHDEPTH}" \
-    -b "${gitref}" \
-    "${gitrepo}" \
-    "${DIR_REPO}"
+  mkdir -p "${DIR_REPO}"
+  pushd "${DIR_REPO}"
+
+  git clone --depth 1 "${gitrepo}" .
+  git fetch origin --depth "${GIT_FETCHDEPTH}" "${gitref}"
+  git -c advice.detachedHead=false checkout --force "${gitref}"
+  git ls-remote --tags --sort=version:refname 2>&- \
+    | awk "END{printf \"+%s:%s\\n\",\$2,\$2}" \
+    | git fetch origin --depth="${GIT_FETCHDEPTH}"
+  git fetch origin --depth="${GIT_FETCHDEPTH}" --update-shallow
 
   log "Commit information"
-  git \
-    -c core.pager=cat \
-    -C "${DIR_REPO}" \
-    log \
-    -1 \
-    --pretty=full
+  git describe --tags --long --dirty
+  git --no-pager log -1 --pretty=full
+
+  popd
 }
 
 get_python() {
