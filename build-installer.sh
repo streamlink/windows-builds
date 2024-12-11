@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2016
+
 set -euo pipefail
 
 BUILDNAME="${1:-}"
@@ -56,7 +58,7 @@ done
 CONFIGJSON=$(cat "${CONFIG}")
 
 if [[ -n "${BUILDNAME}" ]]; then
-  yq -e ".builds[\"${BUILDNAME}\"]" >/dev/null 2>&1 <<< "${CONFIGJSON}" \
+  yq -e --arg b "${BUILDNAME}" '.builds[$b]' >/dev/null 2>&1 <<< "${CONFIGJSON}" \
     || err "Invalid build name"
 else
   BUILDNAME=$(yq -r '.builds | keys | first' <<< "${CONFIGJSON}")
@@ -67,9 +69,9 @@ read -r appname apprel \
 read -r gitrepo gitref \
   < <(yq -r '.git | "\(.repo) \(.ref)"' <<< "${CONFIGJSON}")
 read -r implementation pythonversion platform \
-  < <(yq -r ".builds[\"${BUILDNAME}\"] | \"\(.implementation) \(.pythonversion) \(.platform)\"" <<< "${CONFIGJSON}")
+  < <(yq -r --arg b "${BUILDNAME}" '.builds[$b] | "\(.implementation) \(.pythonversion) \(.platform)"' <<< "${CONFIGJSON}")
 read -r pythonversionfull pythonfilename pythonurl pythonsha256 \
-  < <(yq -r ".builds[\"${BUILDNAME}\"].pythonembed | \"\(.version) \(.filename) \(.url) \(.sha256)\"" <<< "${CONFIGJSON}")
+  < <(yq -r --arg b "${BUILDNAME}" '.builds[$b].pythonembed | "\(.version) \(.filename) \(.url) \(.sha256)"' <<< "${CONFIGJSON}")
 
 gitrepo="${GITREPO:-${gitrepo}}"
 gitref="${GITREF:-${gitref}}"
@@ -130,14 +132,14 @@ get_assets() {
   while read -r assetname; do
     local filename url sha256
     read -r filename url sha256 \
-      < <(yq -r ".assets[\"${assetname}\"] | \"\(.filename) \(.url) \(.sha256)\"" <<< "${CONFIGJSON}")
+      < <(yq -r --arg a "${assetname}" '.assets[$a] | "\(.filename) \(.url) \(.sha256)"' <<< "${CONFIGJSON}")
     if ! [[ -f "${DIR_CACHE}/${filename}" ]]; then
       log "Downloading asset: ${assetname}"
       curl -SLo "${DIR_CACHE}/${filename}" "${url}"
     fi
     log "Checking asset: ${assetname}"
     sha256sum -c - <<< "${sha256} ${DIR_CACHE}/${filename}"
-  done < <(yq -r ".builds[\"${BUILDNAME}\"].assets[]" <<< "${CONFIGJSON}")
+  done < <(yq -r --arg b "${BUILDNAME}" '.builds[$b].assets[]' <<< "${CONFIGJSON}")
 }
 
 build_app() {
@@ -188,7 +190,7 @@ download_wheels() {
     --implementation="${implementation}" \
     --dest="${DIR_WHEELS}" \
     --requirement=/dev/stdin \
-    < <(yq -r ".builds[\"${BUILDNAME}\"].dependencies | to_entries[] | \"\(.key)==\(.value)\"" <<< "${CONFIGJSON}")
+    < <(yq -r --arg b "${BUILDNAME}" '.builds[$b].dependencies | to_entries[] | "\(.key)==\(.value)"' <<< "${CONFIGJSON}")
 }
 
 prepare_python() {
@@ -205,7 +207,7 @@ prepare_assets() {
     log "Preparing asset: ${assetname}"
     local type filename sourcedir targetdir
     read -r type filename sourcedir targetdir \
-      < <(yq -r ".assets[\"${assetname}\"] | \"\(.type) \(.filename) \(.sourcedir) \(.targetdir)\"" <<< "${CONFIGJSON}")
+      < <(yq -r --arg a "${assetname}" '.assets[$a] | "\(.type) \(.filename) \(.sourcedir) \(.targetdir)"' <<< "${CONFIGJSON}")
     case "${type}" in
       zip)
         mkdir -p "${DIR_ASSETS}/${assetname}"
@@ -218,8 +220,8 @@ prepare_assets() {
     esac
     while read -r from to; do
       install -vDT "${sourcedir}/${from}" "${DIR_BUILD}/${targetdir}/${to}"
-    done < <(yq -r ".assets[\"${assetname}\"].files[] | \"\(.from) \(.to)\"" <<< "${CONFIGJSON}")
-  done < <(yq -r ".builds[\"${BUILDNAME}\"].assets[]" <<< "${CONFIGJSON}")
+    done < <(yq -r --arg a "${assetname}" '.assets[$a].files[] | "\(.from) \(.to)"' <<< "${CONFIGJSON}")
+  done < <(yq -r --arg b "${BUILDNAME}" '.builds[$b].assets[]' <<< "${CONFIGJSON}")
 }
 
 prepare_files() {
