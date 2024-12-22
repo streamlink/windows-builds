@@ -35,14 +35,14 @@ builds:
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
-      # https://github.com/python-trio/trio/blob/v0.26.2/pyproject.toml#L52
+      # https://github.com/python-trio/trio/blob/v0.27.0/pyproject.toml#L52
       - cffi>=1.14
-      # https://github.com/urllib3/urllib3/blob/2.2.3/pyproject.toml#L44
+      # https://github.com/urllib3/urllib3/blob/2.3.0/pyproject.toml#L43
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
-      attrs: 24.2.0 --hash=sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2
+      attrs: 24.3.0 --hash=sha256:ac96cd038792094f438ad1f6ff80837353805ac950cd2aa0e0625ef19850c308
       Brotli: 1.1.0 --hash=sha256:906bc3a79de8c4ae5b86d3d75a8b77e44404b0f4261714306e3ad248d8ab0951
-      certifi: 2024.8.30 --hash=sha256:922820b53db7a7257ffbda3f597266d435245903d80737e34f8a45ff3e3230d8
+      certifi: 2024.12.14 --hash=sha256:1275f7a45be9464efc1173084eaa30f866fe2e47d389406136d332ed4967ec56
       cffi: 1.17.1 --hash=sha256:51392eae71afec0d0c8fb1a53b204dbb3bcabcb3c9b807eedf3e1e6ccf2de903
       charset-normalizer: 3.4.0 --hash=sha256:b197e7094f232959f8f20541ead1d9862ac5ebea1d58e9849c1bf979255dfac9
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
@@ -59,6 +59,6 @@ builds:
       sortedcontainers: 2.4.0 --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
       trio: 0.27.0 --hash=sha256:68eabbcf8f457d925df62da780eff15ff5dc68fd6b367e2dde59f7aaf2a0b884
       trio-websocket: 0.11.1 --hash=sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638
-      urllib3: 2.2.3 --hash=sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac
+      urllib3: 2.3.0 --hash=sha256:1cee9ad369867bfdbbb48b7dd50374c0967a0bb7710050facf0dd6911440e3df
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
