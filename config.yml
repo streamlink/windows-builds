@@ -3,8 +3,7 @@ app:
   rel: 1
 git:
   repo: https://github.com/streamlink/streamlink.git
-  # default to current HEAD on master (2024-12-01) since the set of runtime dependencies has changed
-  ref: 7c2940c3e16d8a2213aea2d28559eadf2774f2b1
+  ref: 7.1.0
 assets:
   ffmpeg-x86_64:
     filename: ffmpeg-n7.1-11-g5c59d97e8a-win64-gpl-7.1.zip
