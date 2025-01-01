@@ -102,12 +102,13 @@ get_sources() {
   mkdir -p "${DIR_REPO}"
   pushd "${DIR_REPO}"
 
+  # TODO: re-investigate and optimize this
   git clone --depth 1 "${gitrepo}" .
   git fetch origin --depth "${GIT_FETCHDEPTH}" "${gitref}"
-  git -c advice.detachedHead=false checkout --force "${gitref}"
   git ls-remote --tags --sort=version:refname 2>&- \
     | awk "END{printf \"+%s:%s\\n\",\$2,\$2}" \
     | git fetch origin --depth="${GIT_FETCHDEPTH}"
+  git -c advice.detachedHead=false checkout --force "${gitref}"
   git fetch origin --depth="${GIT_FETCHDEPTH}" --update-shallow
 
   log "Commit information"
