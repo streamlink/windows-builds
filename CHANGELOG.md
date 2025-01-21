@@ -1,6 +1,10 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 7.1.2-2 (2025-01-21)
+
+- Updated FFmpeg to n7.1-153-gaeb8631048, with latest library versions
+
 ## 7.1.2-1 (2025-01-08)
 
 - Updated Streamlink to 7.1.2
