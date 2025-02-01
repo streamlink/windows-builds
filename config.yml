@@ -22,13 +22,13 @@ assets:
 builds:
   py312-x86_64:
     implementation: cp
-    pythonversion: '3.12'
+    pythonversion: '3.13'
     platform: win_amd64
     pythonembed:
-      version: 3.12.8
-      filename: python-v3.12.8-0-g2dc476bc-windows-x64-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20241205-1/python-v3.12.8-0-g2dc476bc-windows-x64-embed.zip
-      sha256: a3c4f650cc8c00c8f17b18e92401482b2dc75208641e1ff1b11093c81855106e
+      version: 3.13.1
+      filename: python-v3.13.1-0-g06714517-windows-x64-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20241205-1/python-v3.13.1-0-g06714517-windows-x64-embed.zip
+      sha256: dd9f8d1499f85eaeac8fb90494a6765bd951e5ea05d568ac45715ed99d45d0a8
     assets:
       - ffmpeg-x86_64
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
@@ -40,14 +40,14 @@ builds:
       - brotli>=1.0.9  # optional urllib3 dependency
     dependencies:
       attrs: 25.1.0 --hash=sha256:c75a69e28a550a7e93789579c22aa26b0f5b83b75dc4e08fe092980051e1090a
-      Brotli: 1.1.0 --hash=sha256:906bc3a79de8c4ae5b86d3d75a8b77e44404b0f4261714306e3ad248d8ab0951
-      certifi: 2024.12.14 --hash=sha256:1275f7a45be9464efc1173084eaa30f866fe2e47d389406136d332ed4967ec56
-      cffi: 1.17.1 --hash=sha256:51392eae71afec0d0c8fb1a53b204dbb3bcabcb3c9b807eedf3e1e6ccf2de903
-      charset-normalizer: 3.4.1 --hash=sha256:6ff8a4a60c227ad87030d76e99cd1698345d4491638dfa6673027c48b3cd395f
+      Brotli: 1.1.0 --hash=sha256:9011560a466d2eb3f5a6e4929cf4a09be405c64154e12df0dd72713f6500e32b
+      certifi: 2025.1.31 --hash=sha256:ca78db4565a652026a4db2bcdf68f2fb589ea80d0be70e03929ed730746b84fe
+      cffi: 1.17.1 --hash=sha256:f6a16c31041f09ead72d69f583767292f750d24913dadacf5756b966aacb3f1a
+      charset-normalizer: 3.4.1 --hash=sha256:b1ac5992a838106edb89654e0aebfc24f5848ae2547d22c2c3f66454daa11971
       h11: 0.14.0 --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
       idna: 3.10 --hash=sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
       isodate: 0.7.2 --hash=sha256:28009937d8031054830160fce6d409ed342816b543597cece116d966c6d99e15
-      lxml: 5.3.0 --hash=sha256:c1a69e58a6bb2de65902051d57fde951febad631a20a64572677a1052690482f
+      lxml: 5.3.0 --hash=sha256:406246b96d552e0503e17a1006fd27edac678b3fcc9f1be71a2f94b4ff61528d
       outcome: 1.3.0.post0 --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
       pycountry: 24.6.1 --hash=sha256:f1a4fb391cd7214f8eefd39556d740adcc233c778a27f8942c8dca351d6ce06f
       pycparser: 2.22 --hash=sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
