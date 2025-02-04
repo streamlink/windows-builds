@@ -237,37 +237,34 @@ prepare_files() {
 
 prepare_installer() {
   log "Reading version string"
-  local versionstring versionplain versionmeta vi_version installerversion
 
+  local versionstring version vi_version
   versionstring="$(PYTHONPATH="${DIR_PKGS}" python -c "from importlib.metadata import version;print(version('${appname}'))")"
-  versionplain="${versionstring%%+*}"
-  versionmeta="${versionstring##*+}"
   distinfo="${DIR_PKGS}/${appname}-${versionstring}.dist-info"
 
-  # Not a custom git reference (assume that only tagged releases are used as source)
-  # Use plain version string with app release number and no abbreviated commit ID
-  if [[ -z "${GITREF}" ]]; then
-    vi_version="${versionplain}.0"
-    installerversion="${versionplain}-${apprel}"
-
-  # Custom ref -> tagged release (no build metadata in version string)
-  # Add abbreviated commit ID to the plain version string to distinguish it from regular releases, set 0 as app release number
-  elif [[ "${versionstring}" != *+* ]]; then
-    vi_version="${versionplain}.0"
-    installerversion="${versionplain}-0-g$(git -c core.abbrev=7 -C "${DIR_REPO}" rev-parse --short HEAD)"
-
-  # Custom ref -> arbitrary untagged commit (version string includes build metadata)
-  # Translate into correct format
+  # custom gitrefs that point to a tag should use the same file name format as builds from untagged commits
+  if [[ -n "${GITREF}" && "${versionstring}" != *+* ]]; then
+    local _commit
+    _commit="$(git -C "${TEMP}/source.git" -c core.abbrev=7 rev-parse --short HEAD)"
+    version="${versionstring%%+*}+0.g${_commit}"
   else
-    vi_version="${versionplain}.${versionmeta%%.*}"
-    installerversion="${versionplain}-${versionmeta/./-}"
+    version="${versionstring}"
+  fi
+
+  if [[ "${versionstring}" != *+* ]]; then
+    vi_version="${versionstring%%+*}.0"
+  else
+    local _versiondist
+    _versiondist="${versionstring##*+}"
+    _versiondist="${_versiondist%%.*}"
+    vi_version="${versionstring%%+*}.${_versiondist}"
   fi
 
   log "Preparing installer template"
   # shellcheck disable=SC2016
   env -i \
     DIR_BUILD="${DIR_BUILD}" \
-    VERSION="${installerversion}" \
+    VERSION="${version}-${apprel}" \
     VI_VERSION="${vi_version}" \
     envsubst '$DIR_BUILD $VERSION $VI_VERSION' \
     < "${ROOT}/installer.nsi" \
@@ -279,9 +276,9 @@ prepare_installer() {
     DIR_BUILD="${DIR_BUILD}" \
     DIR_WHEELS="${DIR_WHEELS}" \
     DIR_DISTINFO="${distinfo}" \
-    VERSION="${installerversion}" \
+    VERSION="${version}-${apprel}" \
     PYTHONVERSION="${pythonversionfull}" \
-    INSTALLER_NAME="${DIR_DIST}/${appname}-${installerversion}-${BUILDNAME}.exe" \
+    INSTALLER_NAME="${DIR_DIST}/${appname}-${version}-${apprel}-${BUILDNAME}.exe" \
     NSI_TEMPLATE="installer.nsi" \
     envsubst '$DIR_BUILD $DIR_DISTINFO $DIR_WHEELS $VERSION $ENTRYPOINT $PYTHONVERSION $INSTALLER_NAME $NSI_TEMPLATE' \
     < "${ROOT}/installer.cfg" \

@@ -216,26 +216,17 @@ install_pkgs() {
 
 build_portable() {
   log "Reading version string"
-  local versionstring versionplain versionmeta version
 
+  local versionstring version
   versionstring="$(PYTHONPATH="${DIR_PKGS}" python -c "from importlib.metadata import version;print(version('${appname}'))")"
-  versionplain="${versionstring%%+*}"
-  versionmeta="${versionstring##*+}"
 
-  # Not a custom git reference (assume that only tagged releases are used as source)
-  # Use plain version string with app release number and no abbreviated commit ID
-  if [[ -z "${GITREF}" ]]; then
-    version="${versionplain}-${apprel}"
-
-  # Custom ref -> tagged release (no build metadata in version string)
-  # Add abbreviated commit ID to the plain version string to distinguish it from regular releases, set 0 as app release number
-  elif [[ "${versionstring}" != *+* ]]; then
-    version="${versionplain}-0-g$(git -c core.abbrev=7 -C "${DIR_REPO}" rev-parse --short HEAD)"
-
-  # Custom ref -> arbitrary untagged commit (version string includes build metadata)
-  # Translate into correct format
+  # custom gitrefs that point to a tag should use the same file name format as builds from untagged commits
+  if [[ -n "${GITREF}" && "${versionstring}" != *+* ]]; then
+    local _commit
+    _commit="$(git -C "${TEMP}/source.git" -c core.abbrev=7 rev-parse --short HEAD)"
+    version="${versionstring%%+*}+0.g${_commit}"
   else
-    version="${versionplain}-${versionmeta/./-}"
+    version="${versionstring}"
   fi
 
   log "Updating modification times"
@@ -244,7 +235,7 @@ build_portable() {
   find "${DIR_BUILD}" -exec touch --no-dereference "--date=${mtime}" '{}' '+'
 
   log "Packaging portable build"
-  local dist="${appname}-${version}-${BUILDNAME}"
+  local dist="${appname}-${version}-${apprel}-${BUILDNAME}"
   (
     cd "${TEMP}"
     mv "${DIR_BUILD}" "${dist}"
