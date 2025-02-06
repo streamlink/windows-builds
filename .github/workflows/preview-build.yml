@@ -1,0 +1,42 @@
+name: Preview build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: A git ref on the Streamlink git repo
+        default: master
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: "${{ inputs.ref }} (${{ matrix.build }})"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - build: installer
+          - build: portable
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          ./install-build-dependencies.sh
+      - name: Build
+        run: |
+          "./build-${{ matrix.build }}.sh" "" "" "${{ inputs.ref }}"
+      - name: Get file name
+        id: vars
+        run: |
+          echo "file_name=$(cd dist && ls *.*)" >> $GITHUB_OUTPUT
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.vars.outputs.file_name }}
+          path: dist/*
