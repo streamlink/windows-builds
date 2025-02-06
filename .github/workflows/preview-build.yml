@@ -1,4 +1,5 @@
 name: Preview build
+run-name: "Preview build - ${{ inputs.ref }}"
 
 on:
   workflow_dispatch:
