@@ -1,6 +1,14 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 7.1.3-1 (2025-02-14)
+
+- Updated Streamlink to 7.1.3, updated its dependencies
+- Updated Python from 3.12.8 to 3.13.2
+- Added preview builds triggered from commits to Streamlink's master branch
+- Removed nightly builds
+- Changed installer and portable archive file name format for builds of untagged commits
+
 ## 7.1.2-2 (2025-01-21)
 
 - Updated FFmpeg to n7.1-153-gaeb8631048, with latest library versions
