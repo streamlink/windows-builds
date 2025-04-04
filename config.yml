@@ -34,10 +34,11 @@ builds:
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
-      # https://github.com/python-trio/trio/blob/v0.27.0/pyproject.toml#L52
+      # https://github.com/python-trio/trio/blob/v0.29.0/pyproject.toml#L51
       - cffi>=1.14
       # https://github.com/urllib3/urllib3/blob/2.3.0/pyproject.toml#L43
       - brotli>=1.0.9  # optional urllib3 dependency
+      - zstandard>=0.18.0  # optional urllib3 dependency
     dependencies:
       attrs: 25.3.0 --hash=sha256:427318ce031701fea540783410126f03899a97ffc6f61596ad581ac2e40e3bc3
       Brotli: 1.1.0 --hash=sha256:9011560a466d2eb3f5a6e4929cf4a09be405c64154e12df0dd72713f6500e32b
@@ -61,3 +62,4 @@ builds:
       urllib3: 2.3.0 --hash=sha256:1cee9ad369867bfdbbb48b7dd50374c0967a0bb7710050facf0dd6911440e3df
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
+      zstandard: 0.23.0 --hash=sha256:f3513916e8c645d0610815c257cbfd3242adfd5c4cfa78be514e5a3ebb42a41b
