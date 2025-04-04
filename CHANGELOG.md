@@ -1,6 +1,11 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 7.2.0-1 (2025-04-04)
+
+- Updated Streamlink to 7.2.0, updated its dependencies
+- Added optional `zstandard` dependency
+
 ## 7.1.3-1 (2025-02-14)
 
 - Updated Streamlink to 7.1.3, updated its dependencies
