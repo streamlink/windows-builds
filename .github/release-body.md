@@ -3,13 +3,6 @@
 - [streamlink/streamlink](https://github.com/streamlink/streamlink/releases) (release changelog)
 - [streamlink/windows-builds](https://github.com/streamlink/windows-builds/blob/master/CHANGELOG.md) (packaging changelog)
 
-> [!IMPORTANT]  
-> Streamlink `7.0.0` changes:
-> - ⚠️ Support for Python 3.8 and Windows 7/8 systems has ended.
-> - ⚠️ No more `x86` ("32 bit") builds.  
->   Please note that the `x86_64`-installer's default location differs from `x86`.  
->   Users of non-`x86_64` systems can always build Streamlink+dependencies on their own.
-
 ## ⚙️ Instructions
 
 See the [README.md](https://github.com/streamlink/windows-builds#notes) for all the details about the installers and portable archives.
