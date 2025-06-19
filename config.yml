@@ -36,9 +36,9 @@ builds:
     dependency_override:
       # https://github.com/python-trio/trio/blob/v0.30.0/pyproject.toml#L51
       - cffi>=1.14
-      # https://github.com/urllib3/urllib3/blob/2.4.0/pyproject.toml#L44
+      # https://github.com/urllib3/urllib3/blob/2.5.0/pyproject.toml#L44
       - brotli>=1.0.9  # optional urllib3 dependency
-      - zstandard>=0.18.0  # optional urllib3 dependency
+      - zstandard>=0.18.0  # optional urllib3 dependency on <=py314
     dependencies:
       attrs: 25.3.0 --hash=sha256:427318ce031701fea540783410126f03899a97ffc6f61596ad581ac2e40e3bc3
       Brotli: 1.1.0 --hash=sha256:9011560a466d2eb3f5a6e4929cf4a09be405c64154e12df0dd72713f6500e32b
@@ -59,7 +59,7 @@ builds:
       sortedcontainers: 2.4.0 --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
       trio: 0.30.0 --hash=sha256:3bf4f06b8decf8d3cf00af85f40a89824669e2d033bb32469d34840edcfc22a5
       trio-websocket: 0.12.2 --hash=sha256:df605665f1db533f4a386c94525870851096a223adcb97f72a07e8b4beba45b6
-      urllib3: 2.4.0 --hash=sha256:4e16665048960a0900c702d4a66415956a584919c03361cac9f1df5c5dd7e813
+      urllib3: 2.5.0 --hash=sha256:e6b01673c0fa6a13e374b50871808eb3bf7046c4b125b216f6bf1cc604cff0dc
       websocket-client: 1.8.0 --hash=sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
       zstandard: 0.23.0 --hash=sha256:f3513916e8c645d0610815c257cbfd3242adfd5c4cfa78be514e5a3ebb42a41b
