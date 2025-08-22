@@ -6,11 +6,11 @@ git:
   ref: 7.5.0
 assets:
   ffmpeg-x86_64:
-    filename: ffmpeg-n7.1-153-gaeb8631048-win64-gpl-7.1.zip
-    url: https://github.com/streamlink/FFmpeg-Builds/releases/download/20250121-1/ffmpeg-n7.1-153-gaeb8631048-win64-gpl-7.1.zip
-    sha256: a75de5f05152e0adb65817602531dd768017310456eaa19e78069af45239314b
+    filename: ffmpeg-n8.0-win64-gpl-8.0.zip
+    url: https://github.com/streamlink/FFmpeg-Builds/releases/download/20250822-1/ffmpeg-n8.0-win64-gpl-8.0.zip
+    sha256: 9fd3f1af180b45faabdfef95b1843890e868b6f1c883147f358efcc4b5da6d68
     type: zip
-    sourcedir: ffmpeg-n7.1-153-gaeb8631048-win64-gpl-7.1
+    sourcedir: ffmpeg-n8.0-win64-gpl-8.0
     targetdir: ffmpeg
     files:
       - from: bin/ffmpeg.exe
