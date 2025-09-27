@@ -79,7 +79,8 @@ upload_assets() {
       "${CURL_OPTIONS[@]}" \
       -H "Content-Type: application/octet-stream" \
       --data-binary "@${path}" \
-      "${GH_UPLOAD}/releases/${release_id}/assets?name=${file}" \
+      --url-query "name=${file}" \
+      "${GH_UPLOAD}/releases/${release_id}/assets" \
       >/dev/null
   done
 }
