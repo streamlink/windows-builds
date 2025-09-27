@@ -1,7 +1,8 @@
 ## 📝 Changelog
 
-- [streamlink/streamlink](https://github.com/streamlink/streamlink/releases) (release changelog)
-- [streamlink/windows-builds](https://github.com/streamlink/windows-builds/blob/master/CHANGELOG.md) (packaging changelog)
+[See the full Streamlink ${TAG} release changelog here.](https://github.com/streamlink/streamlink/releases/tag/${TAG})
+
+${CHANGELOG}
 
 ## ⚙️ Instructions
 

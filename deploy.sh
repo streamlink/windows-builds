@@ -38,6 +38,7 @@ CURL_OPTIONS=(
 )
 GH_API="https://api.github.com/repos/${GITHUB_REPOSITORY}"
 GH_UPLOAD="https://uploads.github.com/repos/${GITHUB_REPOSITORY}"
+CHANGELOG="${ROOT}/CHANGELOG.md"
 BODY="${ROOT}/.github/release-body.md"
 
 
@@ -50,11 +51,19 @@ get_release_id() {
 }
 
 create_release() {
-  local data
+  local data body changelog
+  changelog="$(awk '/^##/{show=0}$1 && show;/^## '"${TAG//./\\.}"' /{show=1}' "${CHANGELOG}")"
+  # shellcheck disable=SC2016
+  body="$(env -i \
+    TAG="${TAG%-*}" \
+    CHANGELOG="${changelog}" \
+    envsubst '$TAG $CHANGELOG' \
+    < "${BODY}"
+  )"
   data="$(jq -cnR \
     --arg tag_name "${TAG}" \
     --arg name "${GITHUB_REPOSITORY} ${TAG}" \
-    --arg body "$(cat "${BODY}")" \
+    --arg body "${body}" \
     '{
       "tag_name": $tag_name,
       "name": $name,
