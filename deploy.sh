@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euo pipefail
 
-[[ "${CI}" ]] && [[ "${GITHUB_REPOSITORY}" ]] && [[ "${GITHUB_REF}" =~ ^refs/tags/ ]] && [[ "${RELEASES_API_KEY}" ]] || exit 1
+[[ -n "${CI:-}" && -n "${GITHUB_REPOSITORY:-}" && "${GITHUB_REF:-}" =~ ^refs/tags/ && -n "${RELEASES_API_KEY:-}" ]] || exit 1
 
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null || dirname "$(readlink -f "${0}")")
 FILES=("${@}")
@@ -15,15 +15,15 @@ declare -A DEPS=(
 
 SELF=$(basename "$(readlink -f "${0}")")
 log() {
-  echo "[${SELF}] $@"
+  echo "[${SELF}]" "${@}"
 }
 err() {
-  log >&2 "$@"
+  log >&2 "${@}"
   exit 1
 }
 
 for dep in "${!DEPS[@]}"; do
-  command -v "${dep}" 2>&1 >/dev/null || err "Missing dependency: ${DEPS["${dep}"]}"
+  command -v "${dep}" >/dev/null 2>&1 || err "Missing dependency: ${DEPS["${dep}"]}"
 done
 
 [[ $# == 0 ]] && err "Missing file(s)"
@@ -50,7 +50,8 @@ get_release_id() {
 }
 
 create_release() {
-  local data="$(jq -cnR \
+  local data
+  data="$(jq -cnR \
     --arg tag_name "${TAG}" \
     --arg name "${GITHUB_REPOSITORY} ${TAG}" \
     --arg body "$(cat "${BODY}")" \
@@ -71,7 +72,8 @@ create_release() {
 upload_assets() {
   local release_id="${1}"
   for path in "${FILES[@]}"; do
-    local file=$(basename "${path}")
+    local file
+    file="$(basename "${path}")"
     log "Uploading ${file}"
     sha256sum "${path}"
     curl -fsSL \
@@ -87,11 +89,12 @@ upload_assets() {
 
 deploy() {
   log "Getting release ID for tag ${TAG}"
-  local release_id=$(get_release_id 2>/dev/null || true)
+  local release_id
+  release_id="$(get_release_id 2>/dev/null || true)"
 
   if [[ -z "${release_id}" ]]; then
     log "Creating new release for tag ${TAG}"
-    local release_id=$(create_release)
+    release_id="$(create_release)"
   fi
 
   if [[ -z "${release_id}" ]]; then
