@@ -3,7 +3,7 @@ app:
   rel: 1
 git:
   repo: https://github.com/streamlink/streamlink.git
-  ref: 7.6.0
+  ref: 0b74ea3b4313addec0fb27b463c782a9c1fa404f
 assets:
   ffmpeg-x86_64:
     filename: ffmpeg-n8.0-win64-gpl-8.0.zip
@@ -22,33 +22,32 @@ assets:
 builds:
   py313-x86_64:
     implementation: cp
-    pythonversion: '3.13'
+    pythonversion: "3.14"
     platform: win_amd64
     pythonembed:
-      version: 3.13.9
-      filename: python-v3.13.9-0-g8183fa5e3-windows-x64-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20251018-1/python-v3.13.9-0-g8183fa5e3-windows-x64-embed.zip
-      sha256: 722b659ebfe39b9f893401db7ce0e06e65435f278ed4bb56f4ab3e5712bbc204
+      version: 3.14.0
+      filename: python-v3.14.0-0-gebf955df-windows-x64-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20251018-1/python-v3.14.0-0-gebf955df-windows-x64-embed.zip
+      sha256: 1665bd7c56f34bced83c3f40ea29e2a58737429539799b7fabb3e0089587bed2
     assets:
       - ffmpeg-x86_64
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
     # https://github.com/pypa/pip/issues/11664
     dependency_override:
-      # https://github.com/python-trio/trio/blob/v0.30.0/pyproject.toml#L51
+      # https://github.com/python-trio/trio/blob/v0.32.0/pyproject.toml#L51
       - cffi>=1.14
       # https://github.com/urllib3/urllib3/blob/2.5.0/pyproject.toml#L44
       - brotli>=1.0.9  # optional urllib3 dependency
-      - zstandard>=0.18.0  # optional urllib3 dependency on <=py314
     dependencies:
       attrs: 25.4.0 --hash=sha256:adcf7e2a1fb3b36ac48d97835bb6d8ade15b8dcce26aba8bf1d14847b57a3373
-      Brotli: 1.1.0 --hash=sha256:9011560a466d2eb3f5a6e4929cf4a09be405c64154e12df0dd72713f6500e32b
+      brotli: 1.2.0 --hash=sha256:e7c0af964e0b4e3412a0ebf341ea26ec767fa0b4cf81abb5e897c9338b5ad6a3
       certifi: 2025.10.5 --hash=sha256:0f212c2744a9bb6de0c56639a6f68afe01ecd92d91f14ae897c4fe7bbeeef0de
-      cffi: 2.0.0 --hash=sha256:19f705ada2530c1167abacb171925dd886168931e0a7b78f5bffcae5c6b5be75
-      charset-normalizer: 3.4.4 --hash=sha256:b435cba5f4f750aa6c0a0d92c541fb79f69a387c91e61f1795227e4ed9cece14
+      cffi: 2.0.0 --hash=sha256:203a48d1fb583fc7d78a4c6655692963b860a417c0528492a6bc21f1aaefab25
+      charset-normalizer: 3.4.4 --hash=sha256:8a6562c3700cce886c5be75ade4a5db4214fda19fede41d9792d100288d8f94c
       h11: 0.16.0 --hash=sha256:63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86
       idna: 3.11 --hash=sha256:771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea
       isodate: 0.7.2 --hash=sha256:28009937d8031054830160fce6d409ed342816b543597cece116d966c6d99e15
-      lxml: 6.0.2 --hash=sha256:b30d46379644fbfc3ab81f8f82ae4de55179414651f110a1514f0b1f8f6cb2d7
+      lxml: 6.0.2 --hash=sha256:fa25afbadead523f7001caf0c2382afd272c315a033a7b06336da2637d92d6ed
       outcome: 1.3.0.post0 --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
       pycountry: 24.6.1 --hash=sha256:f1a4fb391cd7214f8eefd39556d740adcc233c778a27f8942c8dca351d6ce06f
       pycparser: 2.23 --hash=sha256:e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934
@@ -57,9 +56,8 @@ builds:
       requests: 2.32.5 --hash=sha256:2462f94637a34fd532264295e186976db0f5d453d1cdd31473c85a6a161affb6
       sniffio: 1.3.1 --hash=sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2
       sortedcontainers: 2.4.0 --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
-      trio: 0.31.0 --hash=sha256:b5d14cd6293d79298b49c3485ffd9c07e3ce03a6da8c7dfbe0cb3dd7dc9a4774
+      trio: 0.32.0 --hash=sha256:4ab65984ef8370b79a76659ec87aa3a30c5c7c83ff250b4de88c29a8ab6123c5
       trio-websocket: 0.12.2 --hash=sha256:df605665f1db533f4a386c94525870851096a223adcb97f72a07e8b4beba45b6
       urllib3: 2.5.0 --hash=sha256:e6b01673c0fa6a13e374b50871808eb3bf7046c4b125b216f6bf1cc604cff0dc
       websocket-client: 1.9.0 --hash=sha256:af248a825037ef591efbf6ed20cc5faa03d3b47b9e5a2230a529eeee1c1fc3ef
       wsproto: 1.2.0 --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
-      zstandard: 0.25.0 --hash=sha256:1f830a0dac88719af0ae43b8b2d6aef487d437036468ef3c2ea59c51f9d55fd5
