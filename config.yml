@@ -25,10 +25,10 @@ builds:
     pythonversion: "3.14"
     platform: win_amd64
     pythonembed:
-      version: 3.14.1
-      filename: python-v3.14.1-0-g57e0d177-windows-x64-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20251202-1/python-v3.14.1-0-g57e0d177-windows-x64-embed.zip
-      sha256: 2729eabebd4e3c63ca13fb030d5c781bd9fa1f27a6fa45849131a9778d4fabff
+      version: 3.14.2
+      filename: python-v3.14.2-0-gdf793163-windows-x64-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20251205-1/python-v3.14.2-0-gdf793163-windows-x64-embed.zip
+      sha256: a22271cf57231dcf45aa2ad143cb38a685369334ff8ac5f0da54c13244b19605
     assets:
       - ffmpeg-x86_64
     # pip currently ignores package filtering flags (`os_name=="nt"`) when environment markers are set (`--platform=...`)
