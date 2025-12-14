@@ -20,7 +20,7 @@ assets:
       - from: BUILDINFO.txt
         to: BUILDINFO.txt
 builds:
-  py313-x86_64:
+  py314-x86_64:
     implementation: cp
     pythonversion: "3.14"
     platform: win_amd64
