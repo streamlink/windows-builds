@@ -37,7 +37,7 @@ jobs:
         id: vars
         run: |
           echo "file_name=$(cd dist && ls *.*)" >> $GITHUB_OUTPUT
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: ${{ steps.vars.outputs.file_name }}
           path: dist/*
