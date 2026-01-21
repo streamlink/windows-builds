@@ -22,11 +22,11 @@ The windows-builds changelog can be found [here](https://github.com/streamlink/w
 Builds of official Streamlink releases.  
 Download from the [releases page](https://github.com/streamlink/windows-builds/releases).
 
-### Nightly builds  
+### Preview builds
 
-Built once each day at midnight UTC from Streamlink's master branch.  
+Built on each push to Streamlink's master branch.  
 This includes the most recent changes, but is not considered "stable".  
-Download from the build-artifacts of the [scheduled nightly build runs](https://github.com/streamlink/windows-builds/actions?query=event%3Aschedule+is%3Asuccess+branch%3Amaster) (requires a GitHub login).
+Download from the build-artifacts of the [preview-build runs](https://github.com/streamlink/windows-builds/actions/workflows/preview-build.yml) (requires a GitHub login).
 
 
 ## Notes
