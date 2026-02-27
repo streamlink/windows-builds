@@ -46,7 +46,8 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           skip-decompress: true
+          merge-multiple: true
           path: ./dist
-      - run: ./deploy.sh ./dist/**/*
+      - run: ./deploy.sh ./dist/*
         env:
           RELEASES_API_KEY: ${{ secrets.GITHUB_TOKEN }}
