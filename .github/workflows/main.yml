@@ -27,14 +27,10 @@ jobs:
         run: |
           export SOURCE_DATE_EPOCH=$(git show -s --format=%ct)
           "./build-${{ matrix.build }}.sh"
-      - name: Get file name
-        id: vars
-        run: |
-          echo "file_name=$(cd dist && ls *.*)" >> $GITHUB_OUTPUT
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         if: github.event_name == 'push'
         with:
-          name: ${{ steps.vars.outputs.file_name }}
+          archive: false
           path: dist/*
 
   deploy:
@@ -47,8 +43,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: mkdir dist
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
+          skip-decompress: true
           path: ./dist
       - run: ./deploy.sh ./dist/**/*
         env:

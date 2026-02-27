@@ -33,11 +33,7 @@ jobs:
       - name: Build
         run: |
           "./build-${{ matrix.build }}.sh" "" "" "${{ inputs.ref }}"
-      - name: Get file name
-        id: vars
-        run: |
-          echo "file_name=$(cd dist && ls *.*)" >> $GITHUB_OUTPUT
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
-          name: ${{ steps.vars.outputs.file_name }}
+          archive: false
           path: dist/*
