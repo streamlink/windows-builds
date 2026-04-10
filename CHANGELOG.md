@@ -1,6 +1,12 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 8.3.0-1 (2026-04-10)
+
+- Updated Streamlink to 8.3.0, updated its dependencies
+- Updated Python from 3.14.3 to 3.14.4
+- Updated FFmpeg to n8.1-5-g3ec48e4bc6, with latest library versions
+
 ## 8.2.1-1 (2026-03-05)
 
 - Updated Streamlink to 8.2.1, updated its dependencies
