@@ -16,11 +16,6 @@ declare -A DEPS=(
   [unzip]=unzip
 )
 
-PIP_ARGS=(
-  --isolated
-  --disable-pip-version-check
-)
-
 GIT_FETCHDEPTH=300
 
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null || dirname "$(readlink -f "${0}")")
@@ -63,8 +58,8 @@ read -r appname apprel \
   < <(yq -r '.app | "\(.name) \(.rel)"' <<< "${CONFIGJSON}")
 read -r gitrepo gitref \
   < <(yq -r '.git | "\(.repo) \(.ref)"' <<< "${CONFIGJSON}")
-read -r implementation pythonversion platform \
-  < <(yq -r --arg b "${BUILDNAME}" '.builds[$b] | "\(.implementation) \(.pythonversion) \(.platform)"' <<< "${CONFIGJSON}")
+read -r implementation pythonversion platform pythonplatform \
+  < <(yq -r --arg b "${BUILDNAME}" '.builds[$b] | "\(.implementation) \(.pythonversion) \(.platform) \(.pythonplatform)"' <<< "${CONFIGJSON}")
 read -r _pythonversionfull pythonfilename pythonurl pythonsha256 \
   < <(yq -r --arg b "${BUILDNAME}" '.builds[$b].pythonembed | "\(.version) \(.filename) \(.url) \(.sha256)"' <<< "${CONFIGJSON}")
 
@@ -141,7 +136,7 @@ get_assets() {
 
 prepare_python() {
   log "Preparing Python"
-  unzip -q "${DIR_CACHE}/${pythonfilename}" -d "${DIR_BUILD}/Python"
+  unzip "${DIR_CACHE}/${pythonfilename}" -d "${DIR_BUILD}/Python"
 }
 
 prepare_assets() {
@@ -179,35 +174,97 @@ prepare_executables() {
 }
 
 install_pkgs() {
-  log "Installing wheels"
-  pip install \
-    "${PIP_ARGS[@]}" \
-    --require-hashes \
-    --only-binary=:all: \
-    --platform="${platform}" \
-    --python-version="${pythonversion}" \
-    --implementation="${implementation}" \
-    --no-deps \
-    --target="${DIR_PKGS}" \
-    --no-compile \
-    --requirement=/dev/stdin \
-    < <(yq -r --arg b "${BUILDNAME}" '.builds[$b].dependencies | to_entries[] | "\(.key)==\(.value)"' <<< "${CONFIGJSON}")
+  log "Installing packages"
+  (
+    set -x
+    # Install dependencies first
+    # workaroundception:
+    # 1. uv (currently) doesn't let us reliably sync venvs for foreign platforms and/or different python versions,
+    #    which means that we need to use good old pip, but uv's pip install interface can't be used, because it doesn't support
+    #    setting --platform, --python-version and --implementation for choosing the right wheels from the package index,
+    #    so we need to export the lockfile into the requirements.txt format, which pip understands
+    #    https://docs.astral.sh/uv/reference/cli/#uv-sync--python-platform
+    #    https://docs.astral.sh/uv/reference/cli/#uv-python-install
+    # 2. pip 26.1 however STILL doesn't support environment markers for resolving dependencies, as the exported lockfile
+    #    is platform agnostic, meaning dependencies with os_name=="nt" markers will be ignored by pip
+    #    https://github.com/pypa/pip/issues/11664
+    # 3. Therefore use uv's pip compile interface in order to resolve the right dependencies using uv's --python-platform
+    #    argument, which is not available in uv export or uv sync
+    #    https://github.com/astral-sh/uv/issues/17226
+    #
+    # ----
+    #
+    # 1. Translate uv.lock into requirements.txt
+    # 2. Resolve platform-specific and python-version-specific dependencies
+    # 3. Install them using pip (only wheels) and also choose a target dir, so we can skip setting up a temp venv
+    uv export \
+      --no-config \
+      --verbose \
+      --project "${DIR_REPO}" \
+      --no-managed-python \
+      --no-cache \
+      --format requirements-txt \
+      --frozen \
+      --no-emit-project \
+      --no-dev \
+      --all-extras \
+    | uv pip compile \
+      --no-config \
+      --verbose \
+      --no-cache \
+      --python-platform="${pythonplatform}" \
+      --python-version="${pythonversion}" \
+      --generate-hashes \
+      - \
+    > "${TEMP}/requirements.txt"
+    pip install \
+      --disable-pip-version-check \
+      --no-cache-dir \
+      --require-hashes \
+      --only-binary=:all: \
+      --platform="${platform}" \
+      --python-version="${pythonversion}" \
+      --implementation="${implementation}" \
+      --no-deps \
+      --target="${DIR_PKGS}" \
+      --no-compile \
+      --requirement="${TEMP}/requirements.txt"
 
-  log "Installing app"
-  pip install \
-    "${PIP_ARGS[@]}" \
-    --no-cache-dir \
-    --platform="${platform}" \
-    --python-version="${pythonversion}" \
-    --implementation="${implementation}" \
-    --no-deps \
-    --target="${DIR_PKGS}" \
-    --no-compile \
-    --upgrade \
-    "${DIR_REPO}"
+    # Install the main application with its pinned build dependencies, using the same procedure as above
+    uv export \
+      --no-config \
+      --verbose \
+      --project "${DIR_REPO}" \
+      --no-managed-python \
+      --no-cache \
+      --format requirements-txt \
+      --frozen \
+      --only-dev \
+    | uv pip compile \
+      --no-config \
+      --verbose \
+      --no-cache \
+      --python-platform="${pythonplatform}" \
+      --python-version="${pythonversion}" \
+      --generate-hashes \
+      - \
+    > "${TEMP}/build-requirements.txt"
+    pip install \
+      --disable-pip-version-check \
+      --use-feature inprocess-build-deps \
+      --no-cache-dir \
+      --platform="${platform}" \
+      --python-version="${pythonversion}" \
+      --implementation="${implementation}" \
+      --no-deps \
+      --target="${DIR_PKGS}" \
+      --no-compile \
+      --build-constraint="${TEMP}/build-requirements.txt" \
+      "${DIR_REPO}"
+  )
 
   log "Removing unneeded dist files"
-  ( set -x; rm -r "${DIR_PKGS:?}/bin" "${DIR_PKGS}"/*.dist-info/direct_url.json; )
+  rm -rv "${DIR_PKGS:?}/bin" "${DIR_PKGS}"/*.dist-info/direct_url.json
   sed -i -E \
     -e '/^.+\.dist-info\/direct_url\.json,sha256=/d' \
     -e '/^\.\.\/\.\.\//d' \

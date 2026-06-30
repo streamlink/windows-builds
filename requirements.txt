@@ -1,6 +1,7 @@
 distlib ==0.3.6
 freezegun
+pip >=26.0
 pynsist ==2.8
 pyyaml >=6.0.0
-wheel
+uv
 yq >=3.0.0
