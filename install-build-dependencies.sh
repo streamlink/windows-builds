@@ -9,5 +9,4 @@ sudo apt-get install -y --no-install-recommends \
   imagemagick \
   inkscape
 
-python -m pip install -U pip
-python -m pip install -U --upgrade-strategy=eager -r requirements.txt
+python -m pip install --require-hashes -r requirements.lock
