@@ -77,22 +77,15 @@ The `installer.cfg` file defines the pynsist configuration, and the `installer.n
 
 Each build flavor includes the source of an embedded Python build and the fixed set of Streamlink's dependency versions plus checksums for that specific build (Streamlink doesn't provide its own dependency lockfile).
 
-In order to get an update for the dependency JSON data of a specific build flavor, run
-
-```sh
-./get-dependencies.sh "${FLAVOR}" "${GITSOURCE}" "${GITREF}" "${OPT_DEPS}"
-```
-
-with `GITSOURCE`, `GITREF` and `OPT_DEPS` being an optional override.
-
-Building the installers and portable archives works the same way, by running
+Building the installers and portable archives works by running
 
 ```sh
 ./build-installer.sh "${FLAVOR}" "${GITSOURCE}" "${GITREF}"
 ./build-portable.sh "${FLAVOR}" "${GITSOURCE}" "${GITREF}"
 ```
 
-with `GITSOURCE` and `GITREF` being once again optional overrides.  
-Building the installer and portable archives requires an activated virtual Python environment.
+with `GITSOURCE` and `GITREF` being optional overrides (e.g. when building from the master branch).  
+Building the installer and portable archives requires an activated virtual Python environment
+with all build dependencies installed (see `requirements.lock`).
 
 Successfully built installers and portable archives can be found in the `./dist` directory. NSIS unfortunately doesn't support reproducible builds, so the checksums of the installers will always vary. The portable archives however are reproducible if the `SOURCE_DATE_EPOCH` env var is set.
