@@ -3,7 +3,7 @@ app:
   rel: 1
 git:
   repo: https://github.com/streamlink/streamlink.git
-  ref: f7be2514407ccda542f0d113066827d48414f09b
+  ref: 8.5.0
 assets:
   ffmpeg-x86_64:
     filename: ffmpeg-n8.1.2-win64-gpl-8.1.zip

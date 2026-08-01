@@ -1,6 +1,15 @@
 Changelog - streamlink/windows-builds
 ====
 
+## 8.5.0-1 (2026-08-01)
+
+- Updated Streamlink to 8.5.0, updated its dependencies
+- Updated Python from 3.14.3 to 3.14.6
+- Updated FFmpeg to n8.1.2, with latest library versions
+- Replaced custom dependency lockfile with Streamlink's own lockfile
+- Pinned build dependencies and CI actions
+- Made GitHub releases immutable
+
 ## 8.4.0-1 (2026-05-06)
 
 - Updated Streamlink to 8.4.0 with important security fixes, updated its dependencies
