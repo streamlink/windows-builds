@@ -216,6 +216,7 @@ install_pkgs() {
       --python-platform="${pythonplatform}" \
       --python-version="${pythonversion}" \
       --generate-hashes \
+      --override="${ROOT}/requirements-override-${BUILDNAME}.lock" \
       - \
     > "${TEMP}/requirements.txt"
     pip install \
@@ -248,6 +249,7 @@ install_pkgs() {
       --python-platform="${pythonplatform}" \
       --python-version="${pythonversion}" \
       --generate-hashes \
+      --override="${ROOT}/requirements-override-${BUILDNAME}.lock" \
       - \
     > "${TEMP}/build-requirements.txt"
     pip install \
