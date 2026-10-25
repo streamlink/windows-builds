@@ -1,9 +1,9 @@
 app:
   name: streamlink
-  rel: 2
+  rel: 1
 git:
   repo: https://github.com/streamlink/streamlink.git
-  ref: 8.6.2
+  ref: fcf065296b95de2d4881fe2c4bfa6d6798a55ebb
 assets:
   ffmpeg-x86_64:
     filename: ffmpeg-n9.0.1-6-g9d4ca21220-win64-gpl-9.0.zip
@@ -20,15 +20,15 @@ assets:
       - from: BUILDINFO.txt
         to: BUILDINFO.txt
 builds:
-  py314-x86_64:
+  py315-x86_64:
     implementation: cp
-    pythonversion: "3.14"
+    pythonversion: "3.15"
     platform: win_amd64
     pythonplatform: x86_64-pc-windows-msvc
     pythonembed:
-      version: 3.14.9
-      filename: python-v3.14.9-0-gead82c07d-windows-x64-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20261021-1/python-v3.14.9-0-gead82c07d-windows-x64-embed.zip
-      sha256: 9b31845d300be07f3885f13dae7f1ffab64b29c4ae6da26a9e4d3f2e29268468
+      version: 3.15.1
+      filename: python-v3.15.1-0-gc37e74cb-windows-x64-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20261021-1/python-v3.15.1-0-gc37e74cb-windows-x64-embed.zip
+      sha256: c9fb778998347dc6ab3abc8a496c532a8fb5380ae3877589da93c520ede28fcd
     assets:
       - ffmpeg-x86_64
