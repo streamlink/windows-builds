@@ -26,9 +26,9 @@ builds:
     platform: win_amd64
     pythonplatform: x86_64-pc-windows-msvc
     pythonembed:
-      version: 3.15.1
-      filename: python-v3.15.1-0-gc37e74cb-windows-x64-embed.zip
-      url: https://github.com/streamlink/python-windows-embed/releases/download/20261021-1/python-v3.15.1-0-gc37e74cb-windows-x64-embed.zip
-      sha256: c9fb778998347dc6ab3abc8a496c532a8fb5380ae3877589da93c520ede28fcd
+      version: 3.15.2
+      filename: python-v3.15.2-0-g5e58eaad-windows-x64-embed.zip
+      url: https://github.com/streamlink/python-windows-embed/releases/download/20261026-1/python-v3.15.2-0-g5e58eaad-windows-x64-embed.zip
+      sha256: c2465fc020a7e9ea590c61690c4aff766d73f879df79602a589fda96f19a3293
     assets:
       - ffmpeg-x86_64
